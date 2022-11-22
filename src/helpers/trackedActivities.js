@@ -20,6 +20,13 @@ const trackedActivities = [
       activityTime: 0,
     },
   },
+  {
+    trackedActivitiesData: {
+      activityName: "Example",
+      activityId: 4,
+      activityTime: 0,
+    },
+  },
 ];
 
 export default trackedActivities;

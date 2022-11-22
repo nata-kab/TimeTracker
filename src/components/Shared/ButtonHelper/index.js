@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
-import { func, oneOf, oneOfType, string, node } from "prop-types";
+import { func, oneOfType, string, node } from "prop-types";
 import FAIcon from "../FAIcon";
 
 const ButtonHelper = ({ children, onPress, color, iconName }) => {
