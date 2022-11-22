@@ -1,6 +1,7 @@
 import React from "react";
 import { View, SafeAreaView } from "react-native";
 import MainTask from "../MainTask";
+import TaskTitleInput from "../MainTask/TaskTitleInput";
 import TrackersList from "../TrackersList";
 
 const GeneralScreen = () => {

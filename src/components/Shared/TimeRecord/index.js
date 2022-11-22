@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text } from "react-native";
 
 const TimeRecord = ({ activityTime }) => {
-  console.log(activityTime);
   return (
     <View
       style={{
@@ -11,7 +10,7 @@ const TimeRecord = ({ activityTime }) => {
         margin: 4,
       }}
     >
-      <Text> Time </Text>
+      <Text> {activityTime} </Text>
     </View>
   );
 };

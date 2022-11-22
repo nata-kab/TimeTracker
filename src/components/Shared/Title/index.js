@@ -6,7 +6,7 @@ const Title = ({ text }) => {
     <View
       style={{
         flex: 1,
-        alignItems: "center",
+        alignItems: "flex-start",
         margin: 4,
       }}
     >

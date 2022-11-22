@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import Title from "../../Shared/Title";
 import Button from "../../Shared/Button";
 import TimeRecord from "../../Shared/TimeRecord";
@@ -17,7 +17,7 @@ const TrackerItem = ({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        maxWidth: "90%",
+        maxWidth: "95%",
         backgroundColor: "#ffffff",
         margin: 5,
         padding: 2,
@@ -25,8 +25,7 @@ const TrackerItem = ({
     >
       <Title text={activityName} />
       <TimeRecord activityTime={activityTime} />
-      <Text>{activityTime}</Text>
-      <Button>Edit</Button>
+      <Button color="lightBlue">Edit</Button>
     </View>
   );
 };
