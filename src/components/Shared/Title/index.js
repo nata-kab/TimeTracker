@@ -22,7 +22,10 @@ const styles = StyleSheet.create({
 });
 
 Title.propTypes = {
-  text: string.isRequired,
+  text: string,
+};
+Title.defaultProps = {
+  text: "",
 };
 
 export default Title;

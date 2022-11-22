@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { TextInput, StyleSheet } from "react-native";
 
-const TaskTitleInput = () => {
-  const [activityTitle, setActivityTitle] = useState("Activity title");
+const TaskTitleInput = ({ title, setTitle }) => {
   return (
     <TextInput
       styles={styles.input}
-      onChangeText={setActivityTitle}
-      value={activityTitle}
+      onChangeText={setTitle}
+      value={title}
+      placeholder="Add activity title"
+      maxLength={60}
     ></TextInput>
   );
 };

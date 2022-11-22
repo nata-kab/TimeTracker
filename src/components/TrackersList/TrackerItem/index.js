@@ -7,7 +7,7 @@ import TimeRecord from "../../Shared/TimeRecord";
 
 const TrackerItem = ({
   item: {
-    trackedActivitiesData: { activityName, activityId, activityTime },
+    trackedActivitiesData: { activityId, activityName, activityTime },
   },
 }) => {
   return (

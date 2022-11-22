@@ -6,12 +6,16 @@ export const activitySlice = createSlice({
   initialState: trackedActivities,
   reducers: {
     addActivity: (state, action) => {
+      console.log("action.payload.name", action.payload.name);
       const newActivity = {
-        activityName: "Components",
-        activityId: new Date(),
-        activityTime: 0,
+        trackedActivitiesData: {
+          activityName: action.payload.name,
+          activityId: new Date().getTime(),
+          activityTime: 0,
+        },
       };
       state.push(newActivity);
+      //   console.log("state2", state);
     },
     deleteActivity: (state, action) => {
       return state.filter((item) => item.id !== action.payload.id);

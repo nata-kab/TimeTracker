@@ -16,16 +16,32 @@ const activityScheme = {
 };
 
 const MainTask = () => {
-  const activity = useSelector((state) => state.activity);
-  console.log(activity);
+  const [activityTitle, setActivityTitle] = useState("");
+
+  const activities = useSelector((state) => state.activity);
   const dispatch = useDispatch();
-  const [activityTime, setActivityTitle] = useState(0);
+
+  const [activityTime, setActivityTime] = useState(0);
+
+  const handleAddActivity = () => {
+    if (activityTitle === "") {
+      alert("Enter an activity title before adding !");
+      setActivityTitle("");
+      return;
+    }
+    dispatch(addActivity({ name: activityTitle }));
+    setActivityTitle("");
+  };
 
   return (
     <View style={styles.container}>
-      <TaskTitleInput />
+      <TaskTitleInput title={activityTitle} setTitle={setActivityTitle} />
       <TimeRecord activityTime={activityTime} />
-      <ButtonHelper color="#3da200" iconName={"start"}></ButtonHelper>
+      <ButtonHelper
+        color="#3da200"
+        iconName={"start"}
+        onPress={handleAddActivity}
+      ></ButtonHelper>
     </View>
   );
 };

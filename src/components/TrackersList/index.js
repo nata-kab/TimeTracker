@@ -4,13 +4,12 @@ import { useSelector } from "react-redux";
 import TrackerItem from "./TrackerItem";
 
 const TrackerList = () => {
-  const activites = useSelector((state) => {
-    return state.activities;
-  });
+  const { activities } = useSelector((state) => state);
+
   return (
     <FlatList
       style={styles.list}
-      data={activites}
+      data={activities}
       renderItem={TrackerItem}
       keyExtractor={(item) => item.trackedActivitiesData.activityId}
     />
