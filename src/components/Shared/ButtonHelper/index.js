@@ -1,25 +1,41 @@
 import React from "react";
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { func, oneOf, oneOfType, string, node } from "prop-types";
 import FAIcon from "../FAIcon";
 
-const Button = ({ children, onPress, color, iconName }) => {
+const ButtonHelper = ({ children, onPress, color, iconName }) => {
   return (
-    <TouchableOpacity
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        backgroundColor: color,
-        borderRadius: 10,
-        margin: 5,
-        padding: 5,
-      }}
-      onPress={onPress}
-    >
+    <TouchableOpacity style={styles.button} onPress={onPress}>
       {iconName && <FAIcon name={iconName} />}
       <Text>{children}</Text>
     </TouchableOpacity>
   );
 };
 
-export default Button;
+const styles = StyleSheet.create({
+  button: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "green",
+    borderRadius: 10,
+    margin: 5,
+    padding: 5,
+  },
+});
+
+ButtonHelper.propTypes = {
+  iconName: string,
+  onPress: func,
+  children: oneOfType([string, node]),
+  color: string,
+};
+
+ButtonHelper.defaultProps = {
+  iconName: false,
+  onPress: null,
+  children: null,
+  color: null,
+};
+
+export default ButtonHelper;
