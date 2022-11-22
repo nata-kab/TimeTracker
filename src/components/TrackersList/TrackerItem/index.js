@@ -19,7 +19,6 @@ const TrackerItem = ({
         justifyContent: "space-between",
         maxWidth: "90%",
         backgroundColor: "#ffffff",
-        boxSizing: "border-box",
         margin: 5,
         padding: 2,
       }}

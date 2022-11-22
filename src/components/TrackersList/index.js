@@ -8,7 +8,7 @@ const TrackerList = () => {
     <FlatList
       style={{
         display: "flex",
-        width: "90%",
+        width: "95%",
         alignSelf: "center",
       }}
       data={trackedActivities}
