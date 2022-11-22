@@ -1,18 +1,18 @@
 import React from "react";
 import { View, Text } from "react-native";
 
-const Title = ({ text }) => {
+const TimeRecord = ({ activityTime }) => {
   return (
     <View
       style={{
         flex: 1,
-        alignItems: "flex-start",
+        alignItems: "center",
         margin: 4,
       }}
     >
-      <Text> {text} </Text>
+      <Text> {activityTime} </Text>
     </View>
   );
 };
 
-export default Title;
+export default TimeRecord;

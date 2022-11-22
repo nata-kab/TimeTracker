@@ -1,11 +1,13 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React, { useState } from "react";
+import { View, Text, TextInput } from "react-native";
 
 const TaskTitleInput = () => {
+  const [activityTitle, setActivityTitle] = useState("Activity title");
   return (
-    <View>
-      <Text>TaskTitleInput</Text>
-    </View>
+    <TextInput
+      onChangeText={setActivityTitle}
+      value={activityTitle}
+    ></TextInput>
   );
 };
 
