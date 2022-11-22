@@ -39,7 +39,7 @@ const MainTask = () => {
       <TimeRecord activityTime={activityTime} />
       <ButtonHelper
         color="#3da200"
-        iconName={"start"}
+        iconName={"play"}
         onPress={handleAddActivity}
       ></ButtonHelper>
     </View>

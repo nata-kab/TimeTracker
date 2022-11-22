@@ -1,12 +1,12 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 import { func, oneOfType, string, node } from "prop-types";
-import FAIcon from "../FAIcon";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 const ButtonHelper = ({ children, onPress, color, iconName }) => {
   return (
     <TouchableOpacity style={styles.button} onPress={onPress}>
-      {iconName && <FAIcon name={iconName} />}
+      {iconName && <FontAwesome name={iconName} size={18} color="#ffffff" />}
       <Text>{children}</Text>
     </TouchableOpacity>
   );

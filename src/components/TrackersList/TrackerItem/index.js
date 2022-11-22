@@ -14,7 +14,7 @@ const TrackerItem = ({
     <View key={activityId} style={styles.listItem}>
       <Title text={activityName} />
       <TimeRecord activityTime={activityTime} />
-      <ButtonHelper color="white" iconName="pencil">
+      <ButtonHelper color="white" iconName="edit">
         Edit
       </ButtonHelper>
     </View>
