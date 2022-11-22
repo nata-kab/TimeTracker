@@ -1,7 +1,8 @@
 import React from "react";
 import { View, Text } from "react-native";
 
-const Title = ({ text }) => {
+const TimeRecord = ({ activityTime }) => {
+  console.log(activityTime);
   return (
     <View
       style={{
@@ -10,9 +11,9 @@ const Title = ({ text }) => {
         margin: 4,
       }}
     >
-      <Text> {text} </Text>
+      <Text> Time </Text>
     </View>
   );
 };
 
-export default Title;
+export default TimeRecord;

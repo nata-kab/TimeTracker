@@ -1,13 +1,20 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { FlatList } from "react-native";
 import TrackerItem from "./TrackerItem";
+import trackedActivities from "../../helpers/trackedActivities";
 
 const TrackerList = () => {
   return (
-    <View>
-      <Text>TrackerList</Text>
-      <TrackerItem />
-    </View>
+    <FlatList
+      style={{
+        display: "flex",
+        width: "90%",
+        alignSelf: "center",
+      }}
+      data={trackedActivities}
+      renderItem={TrackerItem}
+      keyExtractor={(item) => item.trackedActivitiesData.activityId}
+    />
   );
 };
 
