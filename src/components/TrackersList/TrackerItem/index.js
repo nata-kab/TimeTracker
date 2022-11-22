@@ -1,7 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 import Title from "../../Shared/Title";
-import Button from "../../Shared/Button";
+import ButtonHelper from "../../Shared/ButtonHelper";
 import TimeRecord from "../../Shared/TimeRecord";
 
 const TrackerItem = ({
@@ -25,7 +25,9 @@ const TrackerItem = ({
     >
       <Title text={activityName} />
       <TimeRecord activityTime={activityTime} />
-      <Button color="lightBlue">Edit</Button>
+      <ButtonHelper color="white" iconName="fa-solid fa-pencil">
+        Edit
+      </ButtonHelper>
     </View>
   );
 };

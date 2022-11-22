@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text } from "react-native";
-import Button from "../Shared/Button";
+import ButtonHelper from "../Shared/ButtonHelper";
 import TimeRecord from "../Shared/TimeRecord";
 import Title from "../Shared/Title";
 import TaskTitleInput from "./TaskTitleInput";
@@ -22,7 +22,7 @@ const NewTask = () => {
     >
       <TaskTitleInput />
       <TimeRecord activityTime={activityTime} />
-      <Button color="#3da200">Start</Button>
+      <ButtonHelper color="#3da200" iconName={"start"}></ButtonHelper>
     </View>
   );
 };
