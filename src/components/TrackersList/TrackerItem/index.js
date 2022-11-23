@@ -1,14 +1,13 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { oneOfType, string, number } from "prop-types";
+import { oneOfType, string, number, func } from "prop-types";
+
 import Title from "../../Shared/Title";
 import ButtonHelper from "../../Shared/ButtonHelper";
 import TimeRecord from "../../Shared/TimeRecord";
+import { useDispatch } from "react-redux";
 
 const TrackerItem = ({ item: { activityId, activityName, activityTime } }) => {
-  const aaa = () => {
-    console.log(activityId);
-  };
   return (
     <View key={activityId} style={styles.listItem}>
       <Title text={activityName} />
@@ -35,6 +34,7 @@ TrackerItem.propTypes = {
   activityName: string.isRequired,
   activityId: oneOfType([string, number]).isRequired,
   activityTime: oneOfType([string, number]).isRequired,
+  handleAddActivity: func.isRequired,
 };
 
 export default TrackerItem;

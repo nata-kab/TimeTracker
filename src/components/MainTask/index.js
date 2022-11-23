@@ -25,11 +25,7 @@ const MainTask = () => {
 
   const [activityTime, setActivityTime] = useState(0);
 
-  const isActivityActive = (value) => {
-    return value.isActive === true;
-  };
-
-  let activeActivity = activities.filter(isActivityActive);
+  let activeActivity = activities.filter((value) => value.isActive);
 
   const handleTrackActivityTime = () => {
     if (activityTitle === "") {

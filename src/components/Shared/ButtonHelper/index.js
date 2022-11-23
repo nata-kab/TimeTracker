@@ -34,7 +34,7 @@ const styles = (buttonColor, borderRadius, buttonWidth) =>
       height: 50,
       borderRadius: borderRadius,
       margin: 5,
-      padding: 5,
+      padding: 10,
     },
     text: {
       textAlign: "center",

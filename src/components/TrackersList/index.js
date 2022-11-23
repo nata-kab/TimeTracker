@@ -1,8 +1,9 @@
 import React from "react";
-import { FlatList, StyleSheet, Text } from "react-native";
-import { useSelector } from "react-redux";
+import { FlatList, StyleSheet } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
 import Title from "../Shared/Title";
 import TrackerItem from "./TrackerItem";
+import { addActivity } from "../../redux/reducers/activitySlice";
 
 const TrackerList = () => {
   const { activities } = useSelector((state) => state);
@@ -13,9 +14,19 @@ const TrackerList = () => {
 
   const inactiveActivitiesList = activities.filter(isInactive);
 
+  const dispatch = useDispatch();
+
+  // const handleEnableActivity = () => {
+  //   console.log(activityId);
+  //   dispatch(addActivity({ id: activityId }));
+  // };
+  const handleAddActivity = () => {
+    console.log("addActivity");
+  };
+
   return (
     <>
-      {activities.length > 0 ? (
+      {inactiveActivitiesList.length > 0 ? (
         <FlatList
           style={styles.list}
           data={inactiveActivitiesList}
