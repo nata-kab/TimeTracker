@@ -5,11 +5,7 @@ import Title from "../../Shared/Title";
 import ButtonHelper from "../../Shared/ButtonHelper";
 import TimeRecord from "../../Shared/TimeRecord";
 
-const TrackerItem = ({
-  item: {
-    trackedActivitiesData: { activityId, activityName, activityTime },
-  },
-}) => {
+const TrackerItem = ({ item: { activityId, activityName, activityTime } }) => {
   return (
     <View key={activityId} style={styles.listItem}>
       <Title text={activityName} />

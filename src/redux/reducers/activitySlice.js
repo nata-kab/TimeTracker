@@ -8,11 +8,9 @@ export const activitySlice = createSlice({
     addActivity: (state, action) => {
       console.log("action.payload.name", action.payload.name);
       const newActivity = {
-        trackedActivitiesData: {
-          activityName: action.payload.name,
-          activityId: new Date().getTime(),
-          activityTime: 0,
-        },
+        activityName: action.payload.name,
+        activityId: new Date().getTime(),
+        activityTime: 0,
       };
       state.push(newActivity);
       //   console.log("state2", state);

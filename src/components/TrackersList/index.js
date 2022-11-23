@@ -6,8 +6,6 @@ import TrackerItem from "./TrackerItem";
 
 const TrackerList = () => {
   const { activities } = useSelector((state) => state);
-  console.log(activities, "activities");
-  console.log(activities.length);
 
   return (
     <>
@@ -16,7 +14,7 @@ const TrackerList = () => {
           style={styles.list}
           data={activities}
           renderItem={TrackerItem}
-          keyExtractor={(item) => item.trackedActivitiesData.activityId}
+          keyExtractor={(item) => item.activityId}
         />
       ) : (
         <Title text="The tracked activity list is empty" />
