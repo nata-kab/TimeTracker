@@ -38,10 +38,10 @@ const MainTask = () => {
       <TaskTitleInput title={activityTitle} setTitle={setActivityTitle} />
       <TimeRecord activityTime={activityTime} />
       <ButtonHelper
-        color="#3da200"
+        buttonColor="#3da200"
         iconName={"play"}
         onPress={handleAddActivity}
-      ></ButtonHelper>
+      />
     </View>
   );
 };
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    width: "100%",
+    width: "98%",
     backgroundColor: "#ffffff",
     margin: 5,
     padding: 10,

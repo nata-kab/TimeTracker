@@ -1,41 +1,62 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
-import { func, oneOfType, string, node } from "prop-types";
+import { func, oneOfType, string, node, number } from "prop-types";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
-const ButtonHelper = ({ children, onPress, color, iconName }) => {
+const ButtonHelper = ({
+  children,
+  onPress,
+  buttonColor,
+  iconName,
+  borderRadius,
+  buttonWidth,
+}) => {
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <TouchableOpacity
+      style={styles(buttonColor, borderRadius, buttonWidth).button}
+      onPress={onPress}
+    >
       {iconName && <FontAwesome name={iconName} size={18} color="#ffffff" />}
-      <Text>{children}</Text>
+      {children && <Text>{children}</Text>}
     </TouchableOpacity>
   );
 };
 
-const styles = StyleSheet.create({
-  button: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "green",
-    borderRadius: 10,
-    margin: 5,
-    padding: 5,
-  },
-});
+const styles = (buttonColor, borderRadius, buttonWidth) =>
+  StyleSheet.create({
+    button: {
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: buttonColor,
+      width: buttonWidth,
+      height: 50,
+      borderRadius: borderRadius,
+      margin: 5,
+      padding: 5,
+    },
+    text: {
+      textAlign: "center",
+    },
+  });
 
 ButtonHelper.propTypes = {
   iconName: string,
   onPress: func,
   children: oneOfType([string, node]),
-  color: string,
+  buttonColor: string,
+  borderRadius: number,
+  buttonWidth: number,
 };
 
 ButtonHelper.defaultProps = {
-  iconName: false,
+  iconName: null,
   onPress: null,
   children: null,
-  color: null,
+  buttonColor: null,
+  borderRadius: 50,
+  buttonWidth: 50,
 };
 
 export default ButtonHelper;

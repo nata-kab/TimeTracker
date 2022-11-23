@@ -1,6 +1,8 @@
 import React from "react";
 import { View, SafeAreaView, StyleSheet } from "react-native";
+
 import MainTask from "../MainTask";
+import ButtonHelper from "../Shared/ButtonHelper";
 import TrackersList from "../TrackersList";
 
 const GeneralScreen = () => {
@@ -9,6 +11,9 @@ const GeneralScreen = () => {
       <View style={styles.container}>
         <MainTask />
         <TrackersList />
+        <ButtonHelper buttonColor="#b22222" borderRadius={10} buttonWidth={100}>
+          Clear all
+        </ButtonHelper>
       </View>
     </SafeAreaView>
   );
