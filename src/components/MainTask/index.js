@@ -6,6 +6,7 @@ import { addActivity } from "../../redux/reducers/activitySlice";
 import ButtonHelper from "../Shared/ButtonHelper";
 import TimeRecord from "../Shared/TimeRecord";
 import TaskTitleInput from "./TaskTitleInput";
+import Title from "../Shared/Title";
 
 const activityScheme = {
   trackedActivitiesData: {
@@ -16,32 +17,56 @@ const activityScheme = {
 };
 
 const MainTask = () => {
-  const [activityTitle, setActivityTitle] = useState("");
-
-  const activities = useSelector((state) => state.activity);
+  const { activities } = useSelector((state) => state);
   const dispatch = useDispatch();
+
+  const [activityTitle, setActivityTitle] = useState("");
+  const [isTimerActive, setIsTimerActive] = useState(false);
 
   const [activityTime, setActivityTime] = useState(0);
 
-  const handleAddActivity = () => {
+  const isActivityActive = (value) => {
+    return value.isActive === true;
+  };
+
+  let activeActivity = activities.filter(isActivityActive);
+
+  const handleTrackActivityTime = () => {
     if (activityTitle === "") {
       alert("Enter an activity title before adding !");
       setActivityTitle("");
       return;
     }
+    setIsTimerActive(!isTimerActive);
+  };
+
+  const handleAddActivity = () => {
     dispatch(addActivity({ name: activityTitle }));
     setActivityTitle("");
+    setIsTimerActive(!isTimerActive);
   };
 
   return (
     <View style={styles.container}>
-      <TaskTitleInput title={activityTitle} setTitle={setActivityTitle} />
+      {activeActivity === [] ? (
+        <Title text={activityTitle.activityName} />
+      ) : (
+        <TaskTitleInput title={activityTitle} setTitle={setActivityTitle} />
+      )}
       <TimeRecord activityTime={activityTime} />
-      <ButtonHelper
-        buttonColor="#3da200"
-        iconName={"play"}
-        onPress={handleAddActivity}
-      />
+      {isTimerActive ? (
+        <ButtonHelper
+          buttonColor="#b22222"
+          iconName={"stop"}
+          onPress={handleAddActivity}
+        />
+      ) : (
+        <ButtonHelper
+          buttonColor="#3da200"
+          iconName={"play"}
+          onPress={handleTrackActivityTime}
+        />
+      )}
     </View>
   );
 };

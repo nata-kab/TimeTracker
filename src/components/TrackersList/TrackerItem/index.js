@@ -6,11 +6,14 @@ import ButtonHelper from "../../Shared/ButtonHelper";
 import TimeRecord from "../../Shared/TimeRecord";
 
 const TrackerItem = ({ item: { activityId, activityName, activityTime } }) => {
+  const aaa = () => {
+    console.log(activityId);
+  };
   return (
     <View key={activityId} style={styles.listItem}>
       <Title text={activityName} />
       <TimeRecord activityTime={activityTime} />
-      <ButtonHelper iconName="edit" buttonColor="gray" />
+      <ButtonHelper iconName="play" buttonColor="gray" />
     </View>
   );
 };

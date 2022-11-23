@@ -7,12 +7,18 @@ import TrackerItem from "./TrackerItem";
 const TrackerList = () => {
   const { activities } = useSelector((state) => state);
 
+  const isInactive = (value) => {
+    return value.isActive === false;
+  };
+
+  const inactiveActivitiesList = activities.filter(isInactive);
+
   return (
     <>
       {activities.length > 0 ? (
         <FlatList
           style={styles.list}
-          data={activities}
+          data={inactiveActivitiesList}
           renderItem={TrackerItem}
           keyExtractor={(item) => item.activityId}
         />

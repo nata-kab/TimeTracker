@@ -11,16 +11,25 @@ export const activitySlice = createSlice({
         activityName: action.payload.name,
         activityId: new Date().getTime(),
         activityTime: 0,
+        isActive: false,
       };
       state.push(newActivity);
       //   console.log("state2", state);
     },
-    deleteActivity: (state, action) => {
-      return state.filter((item) => item.id !== action.payload.id);
+
+    editActivity: (state, action) => {
+      let { activitiesList } = state;
+      state.activitiesList = activitiesList.map((item) =>
+        item.id === action.payload.id ? action.payload : item
+      );
     },
   },
+  // deleteActivity: (state, action) => {
+  //   return state.filter((item) => item.id !== action.payload.id);
+  // },
+  // },
 });
 
-export const { addActivity, deleteActivity } = activitySlice.actions;
+export const { addActivity, editActivity } = activitySlice.actions;
 
 export default activitySlice.reducer;
