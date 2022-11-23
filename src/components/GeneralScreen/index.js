@@ -11,9 +11,9 @@ const GeneralScreen = () => {
       <View style={styles.container}>
         <MainTask />
         <TrackersList />
-        <ButtonHelper buttonColor="#b22222" borderRadius={10} buttonWidth={100}>
+        {/* <ButtonHelper buttonColor="#b22222" borderRadius={10} buttonWidth={100}>
           Clear all
-        </ButtonHelper>
+        </ButtonHelper> */}
       </View>
     </SafeAreaView>
   );
