@@ -8,6 +8,7 @@ export const timeTrackersListSlice = createSlice({
       const newActivity = {
         timeTrackerName: action.payload.timeTrackerName,
         timeTrackerId: new Date().getTime(),
+        // Math.random() * 100
         timeTrackerTime: 0,
         isTimeTrackerActive: true,
       };
