@@ -8,10 +8,8 @@ import TimeRecord from "../../Shared/TimeRecord";
 
 const TrackerItem = ({
   item: { timeTrackerId, timeTrackerName, timeTrackerTime },
-  myParam,
+  handleEditTimeTracker,
 }) => {
-  const handleEditTimeTracker = myParam;
-
   return (
     <View style={styles.listItem}>
       <Title text={timeTrackerName} />
@@ -39,10 +37,16 @@ const styles = StyleSheet.create({
 });
 
 TrackerItem.propTypes = {
-  timeTrackerName: string.isRequired,
-  timeTrackerId: oneOfType([string, number]).isRequired,
+  timeTrackerName: string,
+  timeTrackerId: oneOfType([string, number]),
   timeTrackerTime: oneOfType([string, number]),
   myParam: func,
+};
+TrackerItem.defaultProps = {
+  timeTrackerName: null,
+  timeTrackerId: null,
+  timeTrackerTime: null,
+  myParam: null,
 };
 
 export default TrackerItem;

@@ -4,41 +4,38 @@ export const timeTrackersListSlice = createSlice({
   name: "activity",
   initialState: [],
   reducers: {
-    timeTrackersListItemAdded: (state, action) => {
+    addTimeTracker: (state, action) => {
       const newActivity = {
         timeTrackerName: action.payload.timeTrackerName,
         timeTrackerId: new Date().getTime(),
         timeTrackerTime: 0,
-        timeTrackerIsActive: true,
+        isTimeTrackerActive: true,
       };
       state.push(newActivity);
     },
-    timeTrackersListItemEdit: (state, action) => {
+    editTimeTracker: (state, action) => {
       // console.log("action.payload", action.payload);
       // console.log(state, "state1");
-      return state.map((trackerListItem) => {
-        if (trackerListItem.id === action.payload.id) {
+      return state.map((timeTrackerItem) => {
+        if (timeTrackerItem.id === action.payload.id) {
           return {
-            ...trackerListItem,
-            timeTrackerIsActive: action.payload.timeTrackerIsActive,
+            ...timeTrackerItem,
+            isTimeTrackerActive: action.payload.isTimeTrackerActive,
           };
         }
       });
     },
-    timeTrackersListItemDeleted: (state, action) => {
+    deleteTimeTracker: (state, action) => {
       // console.log("action.payload", action.payload);
       return state.filter(
-        (trackersListItem) =>
-          trackersListItem.timeTrackerId !== action.payload.timeTrackerId
+        (timeTrackerItem) =>
+          timeTrackerItem.timeTrackerId !== action.payload.timeTrackerId
       );
     },
   },
 });
 
-export const {
-  timeTrackersListItemAdded,
-  timeTrackersListItemEdit,
-  timeTrackersListItemDeleted,
-} = timeTrackersListSlice.actions;
+export const { addTimeTracker, editTimeTracker, deleteTimeTracker } =
+  timeTrackersListSlice.actions;
 
 export default timeTrackersListSlice.reducer;

@@ -3,21 +3,21 @@ import { FlatList, StyleSheet } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import Title from "../Shared/Title";
 import TrackerItem from "./TrackerItem";
-import { timeTrackersListItemEdit } from "../../redux/reducers/timeTrackersListSlice";
+import { editTimeTracker } from "../../redux/reducers/timeTrackersListSlice";
 
 const TrackerList = () => {
   const { timeTrackersList } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const inactiveTrackersList = timeTrackersList.filter(
-    (value) => !value.timeTrackerIsActive
+    (value) => !value.isTimeTrackerActive
   );
 
   const handleEditTimeTracker = (timeTrackerId) => {
     // dispatch(
-    //   timeTrackersListItemEdit({
+    //   editTimeTracker({
     //     timeTrackerId: timeTrackerId,
-    //     timeTrackerIsActive: true,
+    //     isTimeTrackerActive: true,
     //   })
     // );
   };
@@ -29,7 +29,10 @@ const TrackerList = () => {
           style={styles.list}
           data={inactiveTrackersList}
           renderItem={({ item }) => (
-            <TrackerItem item={item} myParam={handleEditTimeTracker} />
+            <TrackerItem
+              item={item}
+              handleEditTimeTracker={handleEditTimeTracker}
+            />
           )}
           keyExtractor={(item) => item.timeTrackerId}
         />

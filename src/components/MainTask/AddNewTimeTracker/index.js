@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 
-import { timeTrackersListItemAdded } from "../../../redux/reducers/timeTrackersListSlice";
+import { addTimeTracker } from "../../../redux/reducers/timeTrackersListSlice";
 import { useDispatch } from "react-redux";
 
 import TimeRecord from "../../Shared/TimeRecord";
@@ -13,12 +13,12 @@ const AddNewTimeTracker = ({ handleTrackActivityTime }) => {
 
   const [timeTrackerTitle, setTimeTrackerTitle] = useState("");
 
-  const handleTrackersListItemAdded = () => {
+  const handleAddTracker = () => {
     if (timeTrackerTitle === "") {
       alert("Enter an activity title before adding !");
       return;
     }
-    dispatch(timeTrackersListItemAdded({ timeTrackerName: timeTrackerTitle }));
+    dispatch(addTimeTracker({ timeTrackerName: timeTrackerTitle }));
   };
 
   return (
@@ -28,7 +28,7 @@ const AddNewTimeTracker = ({ handleTrackActivityTime }) => {
       <ButtonHelper
         buttonColor="#3da200"
         iconName={"play"}
-        onPress={handleTrackersListItemAdded}
+        onPress={handleAddTracker}
       />
     </View>
   );
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     width: "98%",
-    backgroundColor: "#fbf8e0",
+    backgroundColor: "#faf7d9",
     margin: 5,
     padding: 10,
   },

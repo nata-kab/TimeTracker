@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { timeTrackersListItemEdit } from "../../../redux/reducers/timeTrackersListSlice";
+import { editTimeTracker } from "../../../redux/reducers/timeTrackersListSlice";
 import { useDispatch } from "react-redux";
 
 import Title from "../../Shared/Title";
@@ -12,9 +12,9 @@ const ActiveTimeTracker = ({
 }) => {
   const dispatch = useDispatch();
 
-  const handleTrackersListItemEdit = () => {
+  const editTrackersListItem = () => {
     dispatch(
-      timeTrackersListItemEdit({
+      editTimeTracker({
         timeTrackerId: timeTrackerId,
         timeTrackerIsActive: false,
       })
@@ -28,7 +28,7 @@ const ActiveTimeTracker = ({
       <ButtonHelper
         buttonColor="#b22222"
         iconName={"stop"}
-        onPress={handleTrackersListItemEdit}
+        onPress={editTrackersListItem}
       />
     </View>
   );
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     width: "98%",
-    backgroundColor: "#f2ffcc",
+    backgroundColor: "#b1d27b",
     margin: 5,
     padding: 10,
   },
