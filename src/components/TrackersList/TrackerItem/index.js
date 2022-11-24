@@ -5,14 +5,22 @@ import { oneOfType, string, number, func } from "prop-types";
 import Title from "../../Shared/Title";
 import ButtonHelper from "../../Shared/ButtonHelper";
 import TimeRecord from "../../Shared/TimeRecord";
-import { useDispatch } from "react-redux";
 
-const TrackerItem = ({ item: { activityId, activityName, activityTime } }) => {
+const TrackerItem = ({
+  item: { activityId, activityName, activityTime },
+  myParam,
+}) => {
+  const handleEditActivity = myParam;
+
   return (
-    <View key={activityId} style={styles.listItem}>
+    <View style={styles.listItem}>
       <Title text={activityName} />
       <TimeRecord activityTime={activityTime} />
-      <ButtonHelper iconName="play" buttonColor="gray" />
+      <ButtonHelper
+        iconName="play"
+        buttonColor="gray"
+        onPress={() => handleEditActivity(activityId)}
+      />
     </View>
   );
 };
@@ -34,7 +42,7 @@ TrackerItem.propTypes = {
   activityName: string.isRequired,
   activityId: oneOfType([string, number]).isRequired,
   activityTime: oneOfType([string, number]).isRequired,
-  handleAddActivity: func.isRequired,
+  myParam: func,
 };
 
 export default TrackerItem;

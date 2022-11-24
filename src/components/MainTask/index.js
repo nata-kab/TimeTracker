@@ -1,23 +1,15 @@
 import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
-import { addActivity } from "../../redux/reducers/activitySlice";
+import { timeTrackersListItemAdded } from "../../redux/reducers/timeTrackersListSlice";
 
 import ButtonHelper from "../Shared/ButtonHelper";
 import TimeRecord from "../Shared/TimeRecord";
 import TaskTitleInput from "./TaskTitleInput";
 import Title from "../Shared/Title";
 
-const activityScheme = {
-  trackedActivitiesData: {
-    activityName: "Components",
-    activityId: new Date(),
-    activityTime: 0,
-  },
-};
-
 const MainTask = () => {
-  const { activities } = useSelector((state) => state);
+  const { timeTrackersList } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const [activityTitle, setActivityTitle] = useState("");
@@ -25,7 +17,7 @@ const MainTask = () => {
 
   const [activityTime, setActivityTime] = useState(0);
 
-  let activeActivity = activities.filter((value) => value.isActive);
+  let activeActivity = timeTrackersList.filter((value) => value.isActive);
 
   const handleTrackActivityTime = () => {
     if (activityTitle === "") {
@@ -36,8 +28,8 @@ const MainTask = () => {
     setIsTimerActive(!isTimerActive);
   };
 
-  const handleAddActivity = () => {
-    dispatch(addActivity({ name: activityTitle }));
+  const handleTrackersListItemAdded = () => {
+    dispatch(timeTrackersListItemAdded({ name: activityTitle }));
     setActivityTitle("");
     setIsTimerActive(!isTimerActive);
   };
@@ -54,7 +46,7 @@ const MainTask = () => {
         <ButtonHelper
           buttonColor="#b22222"
           iconName={"stop"}
-          onPress={handleAddActivity}
+          onPress={handleTrackersListItemAdded}
         />
       ) : (
         <ButtonHelper

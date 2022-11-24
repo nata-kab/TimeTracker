@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import activityReducer from "./reducers/activitySlice";
+import timeTrackersListReducer from "./reducers/timeTrackersListSlice";
 import timerSlice from "./reducers/timerSlice";
 
 export default configureStore({
   reducer: {
-    activities: activityReducer,
+    timeTrackersList: timeTrackersListReducer,
     timer: timerSlice,
   },
 });

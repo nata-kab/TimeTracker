@@ -3,34 +3,40 @@ import { FlatList, StyleSheet } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import Title from "../Shared/Title";
 import TrackerItem from "./TrackerItem";
-import { addActivity } from "../../redux/reducers/activitySlice";
+import {
+  trackersListItemAdded,
+  editActivity,
+  timeTrackerListItemDeleted,
+} from "../../redux/reducers/timeTrackersListSlice";
 
 const TrackerList = () => {
-  const { activities } = useSelector((state) => state);
+  const { timeTrackersList } = useSelector((state) => state);
 
   const isInactive = (value) => {
     return value.isActive === false;
   };
 
-  const inactiveActivitiesList = activities.filter(isInactive);
+  const inactiveTrackersList = timeTrackersList.filter(isInactive);
 
   const dispatch = useDispatch();
 
   // const handleEnableActivity = () => {
   //   console.log(activityId);
-  //   dispatch(addActivity({ id: activityId }));
+  //   dispatch(trackersListItemAdded({ id: activityId }));
   // };
-  const handleAddActivity = () => {
-    console.log("addActivity");
+  const handleEditActivity = (activityId) => {
+    dispatch(timeTrackerListItemDeleted({ id: activityId }));
   };
 
   return (
     <>
-      {inactiveActivitiesList.length > 0 ? (
+      {inactiveTrackersList.length > 0 ? (
         <FlatList
           style={styles.list}
-          data={inactiveActivitiesList}
-          renderItem={TrackerItem}
+          data={inactiveTrackersList}
+          renderItem={({ item }) => (
+            <TrackerItem item={item} myParam={handleEditActivity} />
+          )}
           keyExtractor={(item) => item.activityId}
         />
       ) : (
