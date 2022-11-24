@@ -2,23 +2,25 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import ActiveTimeTracker from "./ActiveTimeTracker";
-import InactiveTimeTracker from "./InactiveTimeTracker";
+import AddNewTimeTracker from "./AddNewTimeTracker";
 
 const MainTask = () => {
   const { timeTrackersList } = useSelector((state) => state);
 
-  const activeTimeTracker = timeTrackersList.filter(
+  // const activeTimeTracker = timeTrackersList.filter(
+  //   (value) => value.timeTrackerIsActive
+  // );
+  const activeTimeTracker = timeTrackersList.find(
     (value) => value.timeTrackerIsActive
   );
-
-  useEffect(() => {}, [timeTrackersList]);
+  console.log(activeTimeTracker);
 
   return (
     <>
-      {activeTimeTracker.length > 0 ? (
+      {activeTimeTracker ? (
         <ActiveTimeTracker activeTimeTracker={activeTimeTracker} />
       ) : (
-        <InactiveTimeTracker />
+        <AddNewTimeTracker />
       )}
     </>
   );

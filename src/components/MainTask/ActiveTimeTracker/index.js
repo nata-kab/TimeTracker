@@ -7,14 +7,15 @@ import Title from "../../Shared/Title";
 import TimeRecord from "../../Shared/TimeRecord";
 import ButtonHelper from "../../Shared/ButtonHelper";
 
-const ActiveTimeTracker = ({ activeTimeTracker }) => {
+const ActiveTimeTracker = ({
+  activeTimeTracker: { timeTrackerName, timeTrackerId, timeTrackerTime },
+}) => {
   const dispatch = useDispatch();
-  const timeTracker = activeTimeTracker[0];
 
   const handleTrackersListItemEdit = () => {
     dispatch(
       timeTrackersListItemEdit({
-        timeTrackerId: timeTracker.timeTrackerId,
+        timeTrackerId: timeTrackerId,
         timeTrackerIsActive: false,
       })
     );
@@ -22,8 +23,8 @@ const ActiveTimeTracker = ({ activeTimeTracker }) => {
 
   return (
     <View style={styles.container}>
-      <Title text={timeTracker.timeTrackerName} />
-      <TimeRecord activityTime={timeTracker.timeTrackerTime} />
+      <Title text={timeTrackerName} />
+      <TimeRecord activityTime={timeTrackerTime} />
       <ButtonHelper
         buttonColor="#b22222"
         iconName={"stop"}
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     width: "98%",
-    backgroundColor: "#ffc7b3",
+    backgroundColor: "#f2ffcc",
     margin: 5,
     padding: 10,
   },

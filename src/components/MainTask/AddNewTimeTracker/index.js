@@ -8,7 +8,7 @@ import TimeRecord from "../../Shared/TimeRecord";
 import ButtonHelper from "../../Shared/ButtonHelper";
 import TaskTitleInput from "./TaskTitleInput";
 
-const InactiveTimeTracker = ({ handleTrackActivityTime }) => {
+const AddNewTimeTracker = ({ handleTrackActivityTime }) => {
   const dispatch = useDispatch();
 
   const [timeTrackerTitle, setTimeTrackerTitle] = useState("");
@@ -41,10 +41,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     width: "98%",
-    backgroundColor: "#e9fdce",
+    backgroundColor: "#fbf8e0",
     margin: 5,
     padding: 10,
   },
 });
 
-export default InactiveTimeTracker;
+export default AddNewTimeTracker;
