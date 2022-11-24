@@ -10,7 +10,7 @@ const TrackerItem = ({
   item: { timeTrackerId, timeTrackerName, timeTrackerTime },
   myParam,
 }) => {
-  const handleEditActivity = myParam;
+  const handleEditTimeTracker = myParam;
 
   return (
     <View style={styles.listItem}>
@@ -19,7 +19,7 @@ const TrackerItem = ({
       <ButtonHelper
         iconName="play"
         buttonColor="gray"
-        onPress={() => handleEditActivity(timeTrackerId)}
+        onPress={() => handleEditTimeTracker(timeTrackerId)}
       />
     </View>
   );
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
 TrackerItem.propTypes = {
   timeTrackerName: string.isRequired,
   timeTrackerId: oneOfType([string, number]).isRequired,
-  timeTrackerTime: oneOfType([string, number]).isRequired,
+  timeTrackerTime: oneOfType([string, number]),
   myParam: func,
 };
 

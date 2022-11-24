@@ -9,40 +9,35 @@ export const timeTrackersListSlice = createSlice({
         timeTrackerName: action.payload.timeTrackerName,
         timeTrackerId: new Date().getTime(),
         timeTrackerTime: 0,
-        timeTrackerIsActive: false,
+        timeTrackerIsActive: true,
       };
       state.push(newActivity);
     },
     timeTrackersListItemEdit: (state, action) => {
-      console.log("action.payload", action.payload);
+      // console.log("action.payload", action.payload);
+      // console.log(state, "state1");
+      return state.map((trackerListItem) => {
+        if (trackerListItem.id === action.payload.id) {
+          return {
+            ...trackerListItem,
+            timeTrackerIsActive: action.payload.timeTrackerIsActive,
+          };
+        }
+      });
     },
     timeTrackersListItemDeleted: (state, action) => {
-      console.log("action.payload", action.payload);
+      // console.log("action.payload", action.payload);
       return state.filter(
-        (trackersListItem) => trackersListItem.timeTrackerId !== action.payload
+        (trackersListItem) =>
+          trackersListItem.timeTrackerId !== action.payload.timeTrackerId
       );
     },
-    // return state.map(trackerListItem => {
-    //   if (trackerListItem.id === action.payload.id) {
-    //     return {...trackerListItem, isActive: true}
-    //   };
-    //   return product;
-    // }),
-    // let { activitiesList } = state;
-    // state.activitiesList = activitiesList.map((item) =>
-    //   item.id === action.payload.id ? action.payload : item
-    // );
-    // console.log("state2", state);
-
-    // deleteActivity: (state, action) => {
-    //   return state.filter((item) => item.id !== action.payload.id);
-    // },
   },
 });
 
 export const {
   timeTrackersListItemAdded,
-  editActivity,
+  timeTrackersListItemEdit,
   timeTrackersListItemDeleted,
 } = timeTrackersListSlice.actions;
 
