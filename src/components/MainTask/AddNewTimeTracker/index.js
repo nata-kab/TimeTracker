@@ -24,7 +24,7 @@ const AddNewTimeTracker = ({ handleTrackActivityTime }) => {
   return (
     <View style={styles.container}>
       <TaskTitleInput title={timeTrackerTitle} setTitle={setTimeTrackerTitle} />
-      <TimeRecord activityTime={0} />
+      <TimeRecord activityTime="00 : 00" />
       <ButtonHelper
         buttonColor="#3da200"
         iconName={"play"}

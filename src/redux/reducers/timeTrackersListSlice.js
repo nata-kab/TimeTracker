@@ -14,8 +14,8 @@ export const timeTrackersListSlice = createSlice({
       state.push(newActivity);
     },
     editTimeTracker: (state, action) => {
-      // console.log("action.payload", action.payload);
-      // console.log(state, "state1");
+      console.log("action.payload", action.payload);
+      console.log(state, "state1");
       return state.map((timeTrackerItem) => {
         if (timeTrackerItem.id === action.payload.id) {
           return {
@@ -24,6 +24,7 @@ export const timeTrackersListSlice = createSlice({
           };
         }
       });
+      //after changing is Active on true in List - there is no inactive tracker in list TODO
     },
     deleteTimeTracker: (state, action) => {
       // console.log("action.payload", action.payload);

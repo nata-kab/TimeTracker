@@ -16,7 +16,7 @@ const ActiveTimeTracker = ({
     dispatch(
       editTimeTracker({
         timeTrackerId: timeTrackerId,
-        timeTrackerIsActive: false,
+        isTimeTrackerActive: false,
       })
     );
   };

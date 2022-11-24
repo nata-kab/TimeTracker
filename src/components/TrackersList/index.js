@@ -14,12 +14,13 @@ const TrackerList = () => {
   );
 
   const handleEditTimeTracker = (timeTrackerId) => {
-    // dispatch(
-    //   editTimeTracker({
-    //     timeTrackerId: timeTrackerId,
-    //     isTimeTrackerActive: true,
-    //   })
-    // );
+    console.log(timeTrackerId);
+    dispatch(
+      editTimeTracker({
+        timeTrackerId: timeTrackerId,
+        isTimeTrackerActive: true,
+      })
+    );
   };
 
   return (
