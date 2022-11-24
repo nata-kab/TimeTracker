@@ -6,17 +6,19 @@ import TrackerItem from "./TrackerItem";
 import {
   trackersListItemAdded,
   editActivity,
-  timeTrackerListItemDeleted,
+  timeTrackersListItemDeleted,
 } from "../../redux/reducers/timeTrackersListSlice";
 
 const TrackerList = () => {
   const { timeTrackersList } = useSelector((state) => state);
 
-  const isInactive = (value) => {
-    return value.isActive === false;
-  };
+  // const isInactive = (value) => {
+  //   return value.timeTrackerIsActive === false;
+  // };
 
-  const inactiveTrackersList = timeTrackersList.filter(isInactive);
+  const inactiveTrackersList = timeTrackersList.filter(
+    (value) => !value.timeTrackerIsActive
+  );
 
   const dispatch = useDispatch();
 
@@ -25,7 +27,7 @@ const TrackerList = () => {
   //   dispatch(trackersListItemAdded({ id: activityId }));
   // };
   const handleEditActivity = (activityId) => {
-    dispatch(timeTrackerListItemDeleted({ id: activityId }));
+    dispatch(timeTrackersListItemDeleted({ id: activityId }));
   };
 
   return (
@@ -37,7 +39,7 @@ const TrackerList = () => {
           renderItem={({ item }) => (
             <TrackerItem item={item} myParam={handleEditActivity} />
           )}
-          keyExtractor={(item) => item.activityId}
+          keyExtractor={(item) => item.timeTrackerId}
         />
       ) : (
         <Title text="The tracked activity list is empty" />

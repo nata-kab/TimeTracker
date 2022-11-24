@@ -7,19 +7,19 @@ import ButtonHelper from "../../Shared/ButtonHelper";
 import TimeRecord from "../../Shared/TimeRecord";
 
 const TrackerItem = ({
-  item: { activityId, activityName, activityTime },
+  item: { timeTrackerId, timeTrackerName, timeTrackerTime },
   myParam,
 }) => {
   const handleEditActivity = myParam;
 
   return (
     <View style={styles.listItem}>
-      <Title text={activityName} />
-      <TimeRecord activityTime={activityTime} />
+      <Title text={timeTrackerName} />
+      <TimeRecord activityTime={timeTrackerTime} />
       <ButtonHelper
         iconName="play"
         buttonColor="gray"
-        onPress={() => handleEditActivity(activityId)}
+        onPress={() => handleEditActivity(timeTrackerId)}
       />
     </View>
   );
@@ -39,9 +39,9 @@ const styles = StyleSheet.create({
 });
 
 TrackerItem.propTypes = {
-  activityName: string.isRequired,
-  activityId: oneOfType([string, number]).isRequired,
-  activityTime: oneOfType([string, number]).isRequired,
+  timeTrackerName: string.isRequired,
+  timeTrackerId: oneOfType([string, number]).isRequired,
+  timeTrackerTime: oneOfType([string, number]).isRequired,
   myParam: func,
 };
 

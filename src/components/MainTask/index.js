@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { timeTrackersListItemAdded } from "../../redux/reducers/timeTrackersListSlice";
@@ -12,48 +12,61 @@ const MainTask = () => {
   const { timeTrackersList } = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const [activityTitle, setActivityTitle] = useState("");
+  const [timeTrackerTitle, setTimeTrackerTitle] = useState("");
   const [isTimerActive, setIsTimerActive] = useState(false);
 
   const [activityTime, setActivityTime] = useState(0);
 
-  let activeActivity = timeTrackersList.filter((value) => value.isActive);
+  const activeTimeTracker = timeTrackersList.filter(
+    (value) => value.timeTrackerIsActive
+  );
+
+  useEffect(() => {
+    console.log("useEffect");
+    setTimeTrackerTitle("");
+    console.log(activeTimeTracker);
+  }, [timeTrackersList]);
 
   const handleTrackActivityTime = () => {
-    if (activityTitle === "") {
-      alert("Enter an activity title before adding !");
-      setActivityTitle("");
-      return;
-    }
     setIsTimerActive(!isTimerActive);
+    dispatch(timeTrackersListItemAdded({ timeTrackerName: "active" }));
   };
 
   const handleTrackersListItemAdded = () => {
-    dispatch(timeTrackersListItemAdded({ name: activityTitle }));
-    setActivityTitle("");
-    setIsTimerActive(!isTimerActive);
+    if (timeTrackerTitle === "") {
+      alert("Enter an activity title before adding !");
+      return;
+    }
+    dispatch(timeTrackersListItemAdded({ timeTrackerName: timeTrackerTitle }));
   };
 
   return (
     <View style={styles.container}>
-      {activeActivity === [] ? (
-        <Title text={activityTitle.activityName} />
+      {activeTimeTracker.indexOf !== -1 ? (
+        <>
+          {console.log("no active")}
+          <TaskTitleInput
+            title={timeTrackerTitle}
+            setTitle={setTimeTrackerTitle}
+          />
+          <TimeRecord activityTime={activityTime} />
+          <ButtonHelper
+            buttonColor="#3da200"
+            iconName={"play"}
+            onPress={handleTrackersListItemAdded}
+          />
+        </>
       ) : (
-        <TaskTitleInput title={activityTitle} setTitle={setActivityTitle} />
-      )}
-      <TimeRecord activityTime={activityTime} />
-      {isTimerActive ? (
-        <ButtonHelper
-          buttonColor="#b22222"
-          iconName={"stop"}
-          onPress={handleTrackersListItemAdded}
-        />
-      ) : (
-        <ButtonHelper
-          buttonColor="#3da200"
-          iconName={"play"}
-          onPress={handleTrackActivityTime}
-        />
+        <>
+          {console.log("yes active")}
+          <Title text={"activeTimeTracker[0].timeTrackerName"} />
+          <TimeRecord activityTime={0} />
+          <ButtonHelper
+            buttonColor="#b22222"
+            iconName={"stop"}
+            onPress={handleTrackActivityTime}
+          />
+        </>
       )}
     </View>
   );

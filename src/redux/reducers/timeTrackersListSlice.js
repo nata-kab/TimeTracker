@@ -1,25 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const timeTrackerListSlice = createSlice({
+export const timeTrackersListSlice = createSlice({
   name: "activity",
   initialState: [],
   reducers: {
     timeTrackersListItemAdded: (state, action) => {
       const newActivity = {
-        activityName: action.payload.name,
-        activityId: new Date().getTime(),
-        activityTime: 0,
-        isActive: false,
+        timeTrackerName: action.payload.timeTrackerName,
+        timeTrackerId: new Date().getTime(),
+        timeTrackerTime: 0,
+        timeTrackerIsActive: false,
       };
       state.push(newActivity);
     },
-    editActivity: (state, action) => {
+    timeTrackersListItemEdit: (state, action) => {
       console.log("action.payload", action.payload);
     },
-    timeTrackerListItemDeleted: (state, action) => {
+    timeTrackersListItemDeleted: (state, action) => {
       console.log("action.payload", action.payload);
       return state.filter(
-        (trackerListItem) => trackerListItem.id !== action.payload
+        (trackersListItem) => trackersListItem.timeTrackerId !== action.payload
       );
     },
     // return state.map(trackerListItem => {
@@ -43,7 +43,7 @@ export const timeTrackerListSlice = createSlice({
 export const {
   timeTrackersListItemAdded,
   editActivity,
-  timeTrackerListItemDeleted,
-} = timeTrackerListSlice.actions;
+  timeTrackersListItemDeleted,
+} = timeTrackersListSlice.actions;
 
-export default timeTrackerListSlice.reducer;
+export default timeTrackersListSlice.reducer;
