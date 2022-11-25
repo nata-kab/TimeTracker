@@ -26,7 +26,7 @@ const ActiveTimeTracker = ({
       <Title text={timeTrackerName} />
       <TimeRecord activityTime={timeTrackerTime} />
       <ButtonHelper
-        buttonColor="#b22222"
+        buttonColor="#992600"
         iconName={"stop"}
         onPress={editTrackersListItem}
       />
@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#b1d27b",
     margin: 5,
     padding: 10,
+    borderRadius: 10,
   },
 });
 
