@@ -17,8 +17,7 @@ export const timeTrackersListSlice = createSlice({
       };
     },
     editTimeTracker: (state, action) => {
-      console.log("action.payload", action.payload);
-      console.log(state, "state1");
+      // console.log("action.payload", action.payload);
       return {
         ...state,
         timeTrackersList: state.timeTrackersList.map((timeTracker, index) =>

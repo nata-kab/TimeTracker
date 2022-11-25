@@ -14,7 +14,12 @@ const TrackerList = () => {
   );
 
   const handleEditTimeTracker = (timeTrackerId) => {
-    console.log(timeTrackerId);
+    if (timeTrackersList.find((value) => value.isTimeTrackerActive)) {
+      alert(
+        "Is disabled starting new timer if timer is running! \nTurn off activity timer before active another one"
+      );
+      return;
+    }
     dispatch(
       editTimeTracker({
         timeTrackerId: timeTrackerId,

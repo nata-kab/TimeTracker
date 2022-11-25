@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import { editTimeTracker } from "../../../redux/reducers/timeTrackersListSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Title from "../../Shared/Title";
 import TimeRecord from "../../Shared/TimeRecord";
