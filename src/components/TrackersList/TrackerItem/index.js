@@ -20,7 +20,7 @@ const TrackerItem = ({
       <TimeRecord activityTime={timeTrackerTime} />
       <ButtonHelper
         iconName="play"
-        buttonColor="gray"
+        buttonColor="#C0C0C0"
         onPress={() => handleEditTimeTracker(timeTrackerId)}
       />
     </TouchableOpacity>

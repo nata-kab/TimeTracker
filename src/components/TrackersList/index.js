@@ -1,21 +1,16 @@
 import React, { useState } from "react";
-import {
-  FlatList,
-  StyleSheet,
-  View,
-  Text,
-  Modal,
-  Pressable,
-} from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import Title from "../Shared/Title";
 import TrackerItem from "./TrackerItem";
-import { editTimeTracker } from "../../redux/reducers/timeTrackersListSlice";
+import {
+  editTimeTracker,
+  showTimeTrackerDetails,
+} from "../../redux/reducers/timeTrackersListSlice";
 import ModalWindow from "../Shared/ModalWindow";
 
 const TrackerList = () => {
-  // const [timeTrackerModalVisible, setTimeTrackerModalVisible] = useState(false);
-  const [modalVisible, setModalVisible] = useState(false);
+  const [timeTrackerModalVisible, setTimeTrackerModalVisible] = useState(false);
 
   const { timeTrackersList } = useSelector((state) => state.timeTrackersList);
   const dispatch = useDispatch();
@@ -40,7 +35,22 @@ const TrackerList = () => {
   };
 
   const handleTimeTrackerModal = (timeTrackerId) => {
-    setModalVisible(!modalVisible);
+    dispatch(
+      showTimeTrackerDetails({
+        timeTrackerId: timeTrackerId,
+        areTimeTrackerDetailsVisible: true,
+      })
+    );
+    setTimeTrackerModalVisible(!timeTrackerModalVisible);
+  };
+  const closeTimeTrackerModal = (timeTrackerId) => {
+    dispatch(
+      showTimeTrackerDetails({
+        timeTrackerId: timeTrackerId,
+        areTimeTrackerDetailsVisible: false,
+      })
+    );
+    setTimeTrackerModalVisible(!timeTrackerModalVisible);
   };
 
   return (
@@ -61,33 +71,10 @@ const TrackerList = () => {
       ) : (
         <Title text="The tracked activity list is empty" />
       )}
-      {/* <ModalWindow
+      <ModalWindow
         modalVisible={timeTrackerModalVisible}
-        setModalVisible={setTimeTrackerModalVisible}
-      /> */}
-      <View style={styles.centeredView}>
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
-            setModalVisible(!modalVisible);
-          }}
-        >
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <Text style={styles.modalText}>Hello World!</Text>
-              <Pressable
-                style={[styles.button, styles.buttonClose]}
-                onPress={() => setModalVisible(!modalVisible)}
-              >
-                <Text style={styles.textStyle}>Hide Modal</Text>
-              </Pressable>
-            </View>
-          </View>
-        </Modal>
-      </View>
+        closeTimeTrackerModal={closeTimeTrackerModal}
+      />
     </>
   );
 };
@@ -97,47 +84,6 @@ const styles = StyleSheet.create({
     display: "flex",
     width: "95%",
     alignSelf: "center",
-  },
-  centeredView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22,
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
-    backgroundColor: "#2196F3",
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center",
   },
 });
 

@@ -10,6 +10,7 @@ export const timeTrackersListSlice = createSlice({
         timeTrackerId: new Date().getTime(),
         timeTrackerTime: 0,
         isTimeTrackerActive: true,
+        areTimeTrackerDetailsVisible: false,
       };
       return {
         ...state,
@@ -30,6 +31,20 @@ export const timeTrackersListSlice = createSlice({
         ),
       };
     },
+    showTimeTrackerDetails: (state, action) => {
+      return {
+        ...state,
+        timeTrackersList: state.timeTrackersList.map((timeTracker, index) =>
+          timeTracker.timeTrackerId === action.payload.timeTrackerId
+            ? {
+                ...timeTracker,
+                areTimeTrackerDetailsVisible:
+                  action.payload.areTimeTrackerDetailsVisible,
+              }
+            : timeTracker
+        ),
+      };
+    },
     deleteTimeTracker: (state, action) => {
       // console.log("action.payload", action.payload);
       return {
@@ -43,7 +58,11 @@ export const timeTrackersListSlice = createSlice({
   },
 });
 
-export const { addTimeTracker, editTimeTracker, deleteTimeTracker } =
-  timeTrackersListSlice.actions;
+export const {
+  addTimeTracker,
+  editTimeTracker,
+  deleteTimeTracker,
+  showTimeTrackerDetails,
+} = timeTrackersListSlice.actions;
 
 export default timeTrackersListSlice.reducer;
