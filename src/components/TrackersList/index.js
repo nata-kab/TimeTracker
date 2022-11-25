@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { FlatList, StyleSheet } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import Title from "../Shared/Title";
 import TrackerItem from "./TrackerItem";
-import {
-  editTimeTracker,
-  showTimeTrackerDetails,
-} from "../../redux/reducers/timeTrackersListSlice";
+import { editTimeTracker } from "../../redux/reducers/timeTrackersListSlice";
 import ModalWindow from "../Shared/ModalWindow";
 
 const TrackerList = () => {
   const [timeTrackerModalVisible, setTimeTrackerModalVisible] = useState(false);
+  const timeTrackerDataToDisplayRef = useRef({});
 
   const { timeTrackersList } = useSelector((state) => state.timeTrackersList);
   const dispatch = useDispatch();
@@ -34,24 +32,25 @@ const TrackerList = () => {
     );
   };
 
-  const handleTimeTrackerModal = (timeTrackerId) => {
-    dispatch(
-      showTimeTrackerDetails({
-        timeTrackerId: timeTrackerId,
-        areTimeTrackerDetailsVisible: true,
-      })
-    );
+  const handleTimeTrackerModal = (timeTrackerDataToDisplay) => {
+    timeTrackerDataToDisplayRef.current = timeTrackerDataToDisplay;
+    // dispatch(
+    //   showTimeTrackerDetails({
+    //     timeTrackerId: timeTrackerId,
+    //     areTimeTrackerDetailsVisible: true,
+    //   })
+    // );
     setTimeTrackerModalVisible(!timeTrackerModalVisible);
   };
-  const closeTimeTrackerModal = (timeTrackerId) => {
-    dispatch(
-      showTimeTrackerDetails({
-        timeTrackerId: timeTrackerId,
-        areTimeTrackerDetailsVisible: false,
-      })
-    );
-    setTimeTrackerModalVisible(!timeTrackerModalVisible);
-  };
+  // const closeTimeTrackerModal = (timeTrackerId, timeTrackerName, time) => {
+  //   dispatch(
+  //     showTimeTrackerDetails({
+  //       timeTrackerId: timeTrackerId,
+  //       areTimeTrackerDetailsVisible: false,
+  //     })
+  //   );
+  //   setTimeTrackerModalVisible(!timeTrackerModalVisible);
+  // };
 
   return (
     <>
@@ -72,8 +71,9 @@ const TrackerList = () => {
         <Title text="The tracked activity list is empty" />
       )}
       <ModalWindow
-        modalVisible={timeTrackerModalVisible}
-        closeTimeTrackerModal={closeTimeTrackerModal}
+        isModalVisible={timeTrackerModalVisible}
+        setIsModalVisible={setTimeTrackerModalVisible}
+        timeTrackerDataToDisplay={timeTrackerDataToDisplayRef.current}
       />
     </>
   );

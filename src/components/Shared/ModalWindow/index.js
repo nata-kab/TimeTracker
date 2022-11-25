@@ -1,49 +1,43 @@
+import { string, func, oneOfType, number } from "prop-types";
 import React from "react";
-import { useSelector } from "react-redux";
 
 import { Alert, Modal, StyleSheet, Text, View } from "react-native";
 import ButtonHelper from "../ButtonHelper";
 
-const ModalWindow = ({ modalVisible, closeTimeTrackerModal }) => {
-  const { timeTrackersList } = useSelector((state) => state.timeTrackersList);
-
-  const timeTrackerDetails = timeTrackersList.find(
-    (value) => value.areTimeTrackerDetailsVisible
-  );
-
+const ModalWindow = ({
+  isModalVisible,
+  setIsModalVisible,
+  timeTrackerDataToDisplay: { timeTrackerName, timeTrackerTime },
+  text,
+}) => {
   return (
     <>
-      {timeTrackerDetails && (
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
-            closeTimeTrackerModal(timeTrackerDetails.timeTrackerId);
-          }}
-        >
-          <View style={styles.container}>
-            <View style={styles.modalView}>
-              <Text style={styles.modalText}>
-                {timeTrackerDetails.timeTrackerName}
-              </Text>
-              <Text style={styles.modalText}>
-                time: {timeTrackerDetails.timeTrackerTime}
-              </Text>
-              <ButtonHelper
-                buttonWidth={100}
-                buttonColor={"#C0C0C0"}
-                onPress={() =>
-                  closeTimeTrackerModal(timeTrackerDetails.timeTrackerId)
-                }
-              >
-                Close
-              </ButtonHelper>
-            </View>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isModalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setIsModalVisible(!isModalVisible);
+        }}
+      >
+        <View style={styles.container}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>
+              {timeTrackerName && timeTrackerName}
+              {text && text}
+            </Text>
+            {/* {timeTrackerTime && <Text style={styles.modalText}> time: </Text>} */}
+            <ButtonHelper
+              buttonWidth={100}
+              buttonColor={"#C0C0C0"}
+              onPress={() => setIsModalVisible(!isModalVisible)}
+            >
+              Close
+            </ButtonHelper>
           </View>
-        </Modal>
-      )}
+        </View>
+      </Modal>
     </>
   );
 };
@@ -75,5 +69,20 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 });
+
+ModalWindow.propTypes = {
+  isModalVisible: func.isRequired,
+  setIsModalVisible: func.isRequired,
+  timeTrackerName: string,
+  timeTrackerId: oneOfType([string, number]),
+  timeTrackerTime: oneOfType([string, number]),
+  text: string,
+};
+ModalWindow.defaultProps = {
+  timeTrackerName: null,
+  timeTrackerId: null,
+  timeTrackerTime: null,
+  text: null,
+};
 
 export default ModalWindow;

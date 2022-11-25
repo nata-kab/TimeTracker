@@ -7,6 +7,7 @@ import ButtonHelper from "../../Shared/ButtonHelper";
 import TimeRecord from "../../Shared/TimeRecord";
 
 const TrackerItem = ({
+  item,
   item: { timeTrackerId, timeTrackerName, timeTrackerTime },
   handleEditTimeTracker,
   handleTimeTrackerModal,
@@ -14,7 +15,7 @@ const TrackerItem = ({
   return (
     <TouchableOpacity
       style={styles.listItem}
-      onPress={() => handleTimeTrackerModal(timeTrackerId)}
+      onPress={() => handleTimeTrackerModal(item)}
     >
       <Title text={timeTrackerName} />
       <TimeRecord activityTime={timeTrackerTime} />
