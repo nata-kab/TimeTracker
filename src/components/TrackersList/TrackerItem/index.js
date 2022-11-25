@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { oneOfType, string, number, func } from "prop-types";
 
 import Title from "../../Shared/Title";
@@ -9,9 +9,13 @@ import TimeRecord from "../../Shared/TimeRecord";
 const TrackerItem = ({
   item: { timeTrackerId, timeTrackerName, timeTrackerTime },
   handleEditTimeTracker,
+  handleTimeTrackerModal,
 }) => {
   return (
-    <View style={styles.listItem}>
+    <TouchableOpacity
+      style={styles.listItem}
+      onPress={() => handleTimeTrackerModal(timeTrackerId)}
+    >
       <Title text={timeTrackerName} />
       <TimeRecord activityTime={timeTrackerTime} />
       <ButtonHelper
@@ -19,7 +23,7 @@ const TrackerItem = ({
         buttonColor="gray"
         onPress={() => handleEditTimeTracker(timeTrackerId)}
       />
-    </View>
+    </TouchableOpacity>
   );
 };
 
