@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import { oneOfType, string, number, func } from "prop-types";
 
 import Title from "../../Shared/Title";
@@ -18,6 +18,7 @@ const TrackerItem = ({
       onPress={() => handleTimeTrackerModal(item)}
     >
       <Title text={timeTrackerName} />
+      <Text>Total time:</Text>
       <TimeRecord activityTime={timeTrackerTime} />
       <ButtonHelper
         iconName="play"

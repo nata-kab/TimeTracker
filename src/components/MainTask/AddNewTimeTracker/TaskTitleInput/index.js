@@ -1,41 +1,26 @@
-import React, { useState } from "react";
-import { TextInput, StyleSheet, View } from "react-native";
+import { func, string } from "prop-types";
+import React from "react";
+import { TextInput } from "react-native";
 
 const TaskTitleInput = ({ title, setTitle }) => {
   return (
-    <View>
-      <TextInput
-        styles={styles.input}
-        onChangeText={setTitle}
-        value={title}
-        placeholder="Add activity title"
-        maxLength={40}
-        // multiline={true}
-      />
-    </View>
+    <TextInput
+      onChangeText={setTitle}
+      value={title}
+      placeholder="Add activity title"
+      maxLength={40}
+      multiline={true}
+    />
   );
 };
 
-//TODO handle the styles if the text will be too long so that the text input does not expand
+TaskTitleInput.propTypes = {
+  setTitle: func.isRequired,
+  title: string,
+};
 
-const styles = StyleSheet.create({
-  container: {
-    display: "flex",
-    flexGrow: 0,
-    flexBasis: "50%",
-    maxWidth: "50%",
-    borderWidth: 1,
-    borderColor: "red",
-    overflow: "hidden",
-  },
-  input: {
-    backgroundColor: "#DCDCDC",
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    width: "50%",
-    borderWidth: 1,
-  },
-});
+TaskTitleInput.defaultProps = {
+  title: null,
+};
+
 export default TaskTitleInput;

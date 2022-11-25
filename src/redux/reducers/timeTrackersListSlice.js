@@ -9,6 +9,8 @@ export const timeTrackersListSlice = createSlice({
         timeTrackerName: action.payload.timeTrackerName,
         timeTrackerId: new Date().getTime(),
         timeTrackerTime: 0,
+        timeTrackerStartTime: 0,
+        timeTrackerEndTime: 0,
         isTimeTrackerActive: true,
       };
       return {

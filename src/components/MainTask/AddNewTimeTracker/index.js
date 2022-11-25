@@ -23,7 +23,12 @@ const AddNewTimeTracker = ({ handleTrackActivityTime }) => {
 
   return (
     <View style={styles.container}>
-      <TaskTitleInput title={timeTrackerTitle} setTitle={setTimeTrackerTitle} />
+      <View style={styles.inputContainer}>
+        <TaskTitleInput
+          title={timeTrackerTitle}
+          setTitle={setTimeTrackerTitle}
+        />
+      </View>
       <TimeRecord activityTime="00 : 00" />
       <ButtonHelper
         buttonColor="#1f7a1f"
@@ -45,6 +50,11 @@ const styles = StyleSheet.create({
     margin: 5,
     padding: 10,
     borderRadius: 10,
+  },
+  inputContainer: {
+    width: "45%",
+    margin: 5,
+    padding: 10,
   },
 });
 

@@ -1,4 +1,4 @@
-import { string, func, oneOfType, number } from "prop-types";
+import { string, func, oneOfType, number, bool } from "prop-types";
 import React from "react";
 
 import { Alert, Modal, StyleSheet, Text, View } from "react-native";
@@ -8,7 +8,7 @@ const ModalWindow = ({
   isModalVisible,
   setIsModalVisible,
   timeTrackerDataToDisplay: { timeTrackerName, timeTrackerTime },
-  text,
+  // text,
 }) => {
   return (
     <>
@@ -25,9 +25,9 @@ const ModalWindow = ({
           <View style={styles.modalView}>
             <Text style={styles.modalText}>
               {timeTrackerName && timeTrackerName}
-              {text && text}
+              {/* {text && text} */}
             </Text>
-            {/* {timeTrackerTime && <Text style={styles.modalText}> time: </Text>} */}
+            {/* {timeTrackerTime && <><Text style={styles.modalText}> time: </Text></>} */}
             <ButtonHelper
               buttonWidth={100}
               buttonColor={"#C0C0C0"}
@@ -71,18 +71,18 @@ const styles = StyleSheet.create({
 });
 
 ModalWindow.propTypes = {
-  isModalVisible: func.isRequired,
+  isModalVisible: bool.isRequired,
   setIsModalVisible: func.isRequired,
   timeTrackerName: string,
   timeTrackerId: oneOfType([string, number]),
   timeTrackerTime: oneOfType([string, number]),
-  text: string,
+  // text: string,
 };
 ModalWindow.defaultProps = {
   timeTrackerName: null,
   timeTrackerId: null,
   timeTrackerTime: null,
-  text: null,
+  // text: null,
 };
 
 export default ModalWindow;
