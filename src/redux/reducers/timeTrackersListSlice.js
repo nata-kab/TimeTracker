@@ -2,37 +2,44 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const timeTrackersListSlice = createSlice({
   name: "activity",
-  initialState: [],
+  initialState: { timeTrackersList: [] },
   reducers: {
     addTimeTracker: (state, action) => {
-      const newActivity = {
+      const newTimeTracker = {
         timeTrackerName: action.payload.timeTrackerName,
         timeTrackerId: new Date().getTime(),
-        // Math.random() * 100
         timeTrackerTime: 0,
         isTimeTrackerActive: true,
       };
-      state.push(newActivity);
+      return {
+        ...state,
+        timeTrackersList: [newTimeTracker, ...state.timeTrackersList],
+      };
     },
     editTimeTracker: (state, action) => {
       console.log("action.payload", action.payload);
       console.log(state, "state1");
-      return state.map((timeTrackerItem) => {
-        if (timeTrackerItem.id === action.payload.id) {
-          return {
-            ...timeTrackerItem,
-            isTimeTrackerActive: action.payload.isTimeTrackerActive,
-          };
-        }
-      });
-      //after changing is Active on true in List - there is no inactive tracker in list TODO
+      return {
+        ...state,
+        timeTrackersList: state.timeTrackersList.map((timeTracker, index) =>
+          timeTracker.timeTrackerId === action.payload.timeTrackerId
+            ? {
+                ...timeTracker,
+                isTimeTrackerActive: action.payload.isTimeTrackerActive,
+              }
+            : timeTracker
+        ),
+      };
     },
     deleteTimeTracker: (state, action) => {
       // console.log("action.payload", action.payload);
-      return state.filter(
-        (timeTrackerItem) =>
-          timeTrackerItem.timeTrackerId !== action.payload.timeTrackerId
-      );
+      return {
+        ...state,
+        timeTrackersList: state.timeTrackersList.filter(
+          (timeTrackerItem) =>
+            timeTrackerItem.timeTrackerId !== action.payload.timeTrackerId
+        ),
+      };
     },
   },
 });

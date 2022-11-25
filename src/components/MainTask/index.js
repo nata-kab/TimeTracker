@@ -5,7 +5,7 @@ import ActiveTimeTracker from "./ActiveTimeTracker";
 import AddNewTimeTracker from "./AddNewTimeTracker";
 
 const MainTask = () => {
-  const { timeTrackersList } = useSelector((state) => state);
+  const { timeTrackersList } = useSelector((state) => state.timeTrackersList);
 
   const activeTimeTracker = timeTrackersList.find(
     (value) => value.isTimeTrackerActive

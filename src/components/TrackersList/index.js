@@ -6,7 +6,7 @@ import TrackerItem from "./TrackerItem";
 import { editTimeTracker } from "../../redux/reducers/timeTrackersListSlice";
 
 const TrackerList = () => {
-  const { timeTrackersList } = useSelector((state) => state);
+  const { timeTrackersList } = useSelector((state) => state.timeTrackersList);
   const dispatch = useDispatch();
 
   const inactiveTrackersList = timeTrackersList.filter(
