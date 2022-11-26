@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { string } from "prop-types";
 
 const Title = ({ text }) => {
+  console.log(text);
   return (
     <View style={styles.title}>
       <Text> {text} </Text>
@@ -25,7 +26,7 @@ Title.propTypes = {
   text: string,
 };
 Title.defaultProps = {
-  text: "",
+  text: "nic nie ma",
 };
 
 export default Title;

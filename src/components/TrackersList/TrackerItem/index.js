@@ -8,7 +8,7 @@ import TimeRecord from "../../Shared/TimeRecord";
 
 const TrackerItem = ({
   item,
-  item: { timeTrackerId, timeTrackerName, timeTrackerTime },
+  item: { timeTrackerId, timeTrackerName, timeTrackerTotalTime },
   handleEditTimeTracker,
   handleTimeTrackerModal,
 }) => {
@@ -19,7 +19,7 @@ const TrackerItem = ({
     >
       <Title text={timeTrackerName} />
       <Text>Total time:</Text>
-      <TimeRecord activityTime={timeTrackerTime} />
+      <TimeRecord activityTime={timeTrackerTotalTime} />
       <ButtonHelper
         iconName="play"
         buttonColor="#C0C0C0"
@@ -46,13 +46,13 @@ const styles = StyleSheet.create({
 TrackerItem.propTypes = {
   timeTrackerName: string,
   timeTrackerId: oneOfType([string, number]),
-  timeTrackerTime: oneOfType([string, number]),
+  timeTrackerTotalTime: oneOfType([string, number]),
   myParam: func,
 };
 TrackerItem.defaultProps = {
   timeTrackerName: null,
   timeTrackerId: null,
-  timeTrackerTime: null,
+  timeTrackerTotalTime: null,
   myParam: null,
 };
 

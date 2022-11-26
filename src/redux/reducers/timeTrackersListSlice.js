@@ -8,9 +8,13 @@ export const timeTrackersListSlice = createSlice({
       const newTimeTracker = {
         timeTrackerName: action.payload.timeTrackerName,
         timeTrackerId: new Date().getTime(),
-        timeTrackerTime: 0,
-        timeTrackerStartTime: 0,
-        timeTrackerEndTime: 0,
+        timeTrackerTotalTime: 0,
+        timeTrackerTimesList: [
+          {
+            timeTrackerStartTime: 0,
+            timeTrackerEndTime: 0,
+          },
+        ],
         isTimeTrackerActive: true,
       };
       return {
@@ -43,10 +47,21 @@ export const timeTrackersListSlice = createSlice({
         ),
       };
     },
+    resetTimeTrackerList: (state, action) => {
+      console.log("reducers");
+      return {
+        ...state,
+        timeTrackersList: [],
+      };
+    },
   },
 });
 
-export const { addTimeTracker, editTimeTracker, deleteTimeTracker } =
-  timeTrackersListSlice.actions;
+export const {
+  addTimeTracker,
+  editTimeTracker,
+  deleteTimeTracker,
+  resetTimeTrackerList,
+} = timeTrackersListSlice.actions;
 
 export default timeTrackersListSlice.reducer;

@@ -8,7 +8,7 @@ import TimeRecord from "../../Shared/TimeRecord";
 import ButtonHelper from "../../Shared/ButtonHelper";
 
 const ActiveTimeTracker = ({
-  activeTimeTracker: { timeTrackerName, timeTrackerId, timeTrackerTime },
+  activeTimeTracker: { timeTrackerName, timeTrackerId, timeTrackerTotalTime },
 }) => {
   const dispatch = useDispatch();
 
@@ -24,7 +24,7 @@ const ActiveTimeTracker = ({
   return (
     <View style={styles.container}>
       <Title text={timeTrackerName} />
-      <TimeRecord activityTime={timeTrackerTime} />
+      <TimeRecord activityTime={timeTrackerTotalTime} />
       <ButtonHelper
         buttonColor="#992600"
         iconName={"stop"}

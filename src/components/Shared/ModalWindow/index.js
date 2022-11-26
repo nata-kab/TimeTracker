@@ -1,15 +1,23 @@
-import { string, func, oneOfType, number, bool } from "prop-types";
+import { string, func, oneOfType, number, bool, array } from "prop-types";
 import React from "react";
 
-import { Alert, Modal, StyleSheet, Text, View } from "react-native";
+import { Alert, Modal, ScrollView, StyleSheet, Text, View } from "react-native";
 import ButtonHelper from "../ButtonHelper";
+import Title from "../Title";
 
 const ModalWindow = ({
   isModalVisible,
   setIsModalVisible,
-  timeTrackerDataToDisplay: { timeTrackerName, timeTrackerTime },
-  // text,
+  timeTrackerDataToDisplay: {
+    timeTrackerName,
+    timeTrackerTotalTime,
+    timeTrackerTimesList,
+  },
 }) => {
+  if (!timeTrackerName) {
+    return;
+  }
+
   return (
     <>
       <Modal
@@ -21,21 +29,27 @@ const ModalWindow = ({
           setIsModalVisible(!isModalVisible);
         }}
       >
-        <View style={styles.container}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>
-              {timeTrackerName && timeTrackerName}
-              {/* {text && text} */}
-            </Text>
-            {/* {timeTrackerTime && <><Text style={styles.modalText}> time: </Text></>} */}
-            <ButtonHelper
-              buttonWidth={100}
-              buttonColor={"#C0C0C0"}
-              onPress={() => setIsModalVisible(!isModalVisible)}
-            >
-              Close
-            </ButtonHelper>
-          </View>
+        <View style={styles.modalView}>
+          <Text>{timeTrackerName}</Text>
+          <Text style={styles.modalText}>
+            Total time:
+            {timeTrackerTotalTime}
+          </Text>
+          <ScrollView style={styles.scrollView}>
+            {timeTrackerTimesList.map((item, index) => (
+              <View key={index} style={styles.scrollViewItem}>
+                <Text>Start time: {item.timeTrackerStartTime}</Text>
+                <Text>End time: {item.timeTrackerEndTime}</Text>
+              </View>
+            ))}
+          </ScrollView>
+          <ButtonHelper
+            buttonWidth={100}
+            buttonColor={"#C0C0C0"}
+            onPress={() => setIsModalVisible(!isModalVisible)}
+          >
+            Close
+          </ButtonHelper>
         </View>
       </Modal>
     </>
@@ -43,13 +57,8 @@ const ModalWindow = ({
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
   modalView: {
-    margin: 20,
+    margin: 30,
     backgroundColor: "white",
     borderRadius: 10,
     padding: 25,
@@ -63,9 +72,29 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
-
+  contentContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignSelf: "center",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  scrollView: {
+    width: "95%",
+    backgroundColor: "#f5f5f5",
+    borderRadius: 5,
+    maxHeight: "80%",
+  },
+  scrollViewItem: {
+    width: "90%",
+    padding: 5,
+    margin: 10,
+    borderRadius: 5,
+    backgroundColor: "#ffffff",
+  },
   modalText: {
     marginBottom: 15,
+    padding: 5,
     textAlign: "center",
   },
 });
@@ -75,14 +104,12 @@ ModalWindow.propTypes = {
   setIsModalVisible: func.isRequired,
   timeTrackerName: string,
   timeTrackerId: oneOfType([string, number]),
-  timeTrackerTime: oneOfType([string, number]),
-  // text: string,
+  timeTrackerTotalTime: oneOfType([string, number]),
 };
 ModalWindow.defaultProps = {
   timeTrackerName: null,
   timeTrackerId: null,
-  timeTrackerTime: null,
-  // text: null,
+  timeTrackerTotalTime: null,
 };
 
 export default ModalWindow;

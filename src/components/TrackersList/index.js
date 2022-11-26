@@ -42,15 +42,6 @@ const TrackerList = () => {
     // );
     setTimeTrackerModalVisible(!timeTrackerModalVisible);
   };
-  // const closeTimeTrackerModal = (timeTrackerId, timeTrackerName, time) => {
-  //   dispatch(
-  //     showTimeTrackerDetails({
-  //       timeTrackerId: timeTrackerId,
-  //       areTimeTrackerDetailsVisible: false,
-  //     })
-  //   );
-  //   setTimeTrackerModalVisible(!timeTrackerModalVisible);
-  // };
 
   return (
     <>
