@@ -6,6 +6,7 @@ import { resetTimeTrackerList } from "../../redux/reducers/timeTrackersListSlice
 import MainTask from "../MainTask";
 import ButtonHelper from "../Shared/ButtonHelper";
 import TrackersList from "../TrackersList";
+import Timer from "../MainTask/ActiveTimeTracker/Timer";
 
 const GeneralScreen = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const GeneralScreen = () => {
           buttonWidth={100}
           onPress={handleDeleteAllTimeTrackerList}
         >
+          <Timer />
           Clear all
         </ButtonHelper>
       </View>

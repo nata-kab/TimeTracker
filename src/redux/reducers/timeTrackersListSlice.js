@@ -51,7 +51,6 @@ export const timeTrackersListSlice = createSlice({
     },
     saveActiveTrackerStartTime: (state, action) => {
       state.activeTrackerStartTime = new Date().getTime();
-      console.log(state.activeTrackerStartTime, "START");
     },
   },
 });
