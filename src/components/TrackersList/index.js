@@ -3,7 +3,10 @@ import { FlatList, StyleSheet } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import Title from "../Shared/Title";
 import TrackerItem from "./TrackerItem";
-import { editTimeTracker } from "../../redux/reducers/timeTrackersListSlice";
+import {
+  editTimeTracker,
+  saveActiveTrackerStartTime,
+} from "../../redux/reducers/timeTrackersListSlice";
 import ModalWindow from "../Shared/ModalWindow";
 
 const TrackerList = () => {
@@ -18,13 +21,13 @@ const TrackerList = () => {
   );
 
   const handleEditTimeTracker = (timeTrackerId) => {
-    console.log(timeTrackerId);
     if (timeTrackersList.find((value) => value.isTimeTrackerActive)) {
       alert(
         "Is disabled starting new timer if timer is running! \nTurn off activity timer before active another one"
       );
       return;
     }
+    dispatch(saveActiveTrackerStartTime());
     dispatch(
       editTimeTracker({
         timeTrackerId: timeTrackerId,

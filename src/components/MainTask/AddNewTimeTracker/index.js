@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 
-import { addTimeTracker } from "../../../redux/reducers/timeTrackersListSlice";
+import {
+  addTimeTracker,
+  saveActiveTrackerStartTime,
+} from "../../../redux/reducers/timeTrackersListSlice";
 import { useDispatch } from "react-redux";
 
 import TimeRecord from "../../Shared/TimeRecord";
@@ -25,6 +28,8 @@ const AddNewTimeTracker = ({ handleTrackActivityTime }) => {
       // const day = hour * 24;
       // const year = day * 365;
     };
+
+    dispatch(saveActiveTrackerStartTime());
     dispatch(addTimeTracker({ timeTrackerName: timeTrackerTitle }));
   };
 

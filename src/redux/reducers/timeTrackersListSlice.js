@@ -46,9 +46,10 @@ export const timeTrackersListSlice = createSlice({
     resetTimeTrackerList: (state) => {
       state.timeTrackersList = [];
     },
-  },
-  saveActiveTrackerStartTime: (state) => {
-    state.activeTrackerStartTime = new Date().getTime();
+    saveActiveTrackerStartTime: (state, action) => {
+      state.activeTrackerStartTime = new Date().getTime();
+      console.log(state.activeTrackerStartTime, "START");
+    },
   },
 });
 
@@ -58,6 +59,7 @@ export const {
   editTimeTracker,
   deleteTimeTracker,
   resetTimeTrackerList,
+  saveActiveTrackerStartTime,
 } = timeTrackersListSlice.actions;
 
 export default timeTrackersListSlice.reducer;

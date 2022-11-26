@@ -14,10 +14,19 @@ const ActiveTimeTracker = ({
   activeTimeTracker: { timeTrackerName, timeTrackerId, timeTrackerTotalTime },
 }) => {
   const dispatch = useDispatch();
+  const { activeTrackerStartTime } = useSelector(
+    (state) => state.timeTrackersList
+  );
+  console.log(activeTrackerStartTime, "activeTrackerStartTime ");
+
+  // const { activeTrackerStartTime } = useSelector(
+  //   (state) => state.activeTrackerStartTime
+  // );
+  // console.log(timeTrackersList, "activeTrackerStartTime");
 
   const editTrackersListItem = () => {
     const timeTrackerTimes = {
-      timeTrackerStartTime: timeTrackerId,
+      timeTrackerStartTime: activeTrackerStartTime,
       timeTrackerEndTime: new Date().getTime(),
     };
     dispatch(

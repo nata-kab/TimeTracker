@@ -3,7 +3,6 @@ import { View, Text, StyleSheet } from "react-native";
 import { string } from "prop-types";
 
 const Title = ({ text }) => {
-  console.log(text);
   return (
     <View style={styles.title}>
       <Text style={styles.text}> {text} </Text>
