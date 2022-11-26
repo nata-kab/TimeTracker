@@ -17,12 +17,6 @@ const ActiveTimeTracker = ({
   const { activeTrackerStartTime } = useSelector(
     (state) => state.timeTrackersList
   );
-  console.log(activeTrackerStartTime, "activeTrackerStartTime ");
-
-  // const { activeTrackerStartTime } = useSelector(
-  //   (state) => state.activeTrackerStartTime
-  // );
-  // console.log(timeTrackersList, "activeTrackerStartTime");
 
   const editTrackersListItem = () => {
     const timeTrackerTimes = {
