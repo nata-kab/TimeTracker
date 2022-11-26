@@ -17,24 +17,48 @@ const ActiveTimeTracker = ({
   const { activeTrackerStartTime } = useSelector(
     (state) => state.timeTrackersList
   );
+  const calculateTime = (endTime) => {
+    const time = endTime - activeTrackerStartTime;
 
-  const editTrackersListItem = () => {
-    const timeTrackerTimes = {
-      timeTrackerStartTime: activeTrackerStartTime,
-      timeTrackerEndTime: new Date().getTime(),
-    };
-    dispatch(
-      closeTimeTracker({
-        timeTrackerId: timeTrackerId,
-        timeTrackerTimes: timeTrackerTimes,
-      })
-    );
-    dispatch(
-      editTimeTracker({
-        timeTrackerId: timeTrackerId,
-        isTimeTrackerActive: false,
-      })
-    );
+    return time;
+  };
+
+  const calculateTotalTime = (timeTrackerDuration) => {
+    const totalTime = timeTrackerDuration + timeTrackerTotalTime;
+    return totalTime;
+  };
+
+  const editTrackersListItem = (async) => {
+    try {
+      const endTime = new Date().getTime();
+
+      const timeTrackerTimes = {
+        timeTrackerStartTime: activeTrackerStartTime,
+        timeTrackerEndTime: endTime,
+        timeTrackerDuration: calculateTime(endTime),
+      };
+
+      const timeTrackerTotalTime = calculateTotalTime(
+        timeTrackerTimes.timeTrackerDuration
+      );
+
+      dispatch(
+        closeTimeTracker({
+          timeTrackerId: timeTrackerId,
+          timeTrackerTimes: timeTrackerTimes,
+          timeTrackerTotalTime: timeTrackerTotalTime,
+        })
+      );
+      dispatch(
+        editTimeTracker({
+          timeTrackerId: timeTrackerId,
+          isTimeTrackerActive: false,
+        })
+      );
+    } catch (e) {
+      console.log(`Saved data failed! : ${e}`);
+      return e;
+    }
   };
 
   return (
