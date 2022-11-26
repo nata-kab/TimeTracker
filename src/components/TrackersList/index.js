@@ -18,6 +18,7 @@ const TrackerList = () => {
   );
 
   const handleEditTimeTracker = (timeTrackerId) => {
+    console.log(timeTrackerId);
     if (timeTrackersList.find((value) => value.isTimeTrackerActive)) {
       alert(
         "Is disabled starting new timer if timer is running! \nTurn off activity timer before active another one"
@@ -34,12 +35,6 @@ const TrackerList = () => {
 
   const handleTimeTrackerModal = (timeTrackerDataToDisplay) => {
     timeTrackerDataToDisplayRef.current = timeTrackerDataToDisplay;
-    // dispatch(
-    //   showTimeTrackerDetails({
-    //     timeTrackerId: timeTrackerId,
-    //     areTimeTrackerDetailsVisible: true,
-    //   })
-    // );
     setTimeTrackerModalVisible(!timeTrackerModalVisible);
   };
 

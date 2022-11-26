@@ -1,6 +1,9 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { editTimeTracker } from "../../../redux/reducers/timeTrackersListSlice";
+import {
+  editTimeTracker,
+  closeTimeTracker,
+} from "../../../redux/reducers/timeTrackersListSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import Title from "../../Shared/Title";
@@ -13,6 +16,16 @@ const ActiveTimeTracker = ({
   const dispatch = useDispatch();
 
   const editTrackersListItem = () => {
+    const timeTrackerTimes = {
+      timeTrackerStartTime: timeTrackerId,
+      timeTrackerEndTime: new Date().getTime(),
+    };
+    dispatch(
+      closeTimeTracker({
+        timeTrackerId: timeTrackerId,
+        timeTrackerTimes: timeTrackerTimes,
+      })
+    );
     dispatch(
       editTimeTracker({
         timeTrackerId: timeTrackerId,

@@ -6,7 +6,7 @@ const Title = ({ text }) => {
   console.log(text);
   return (
     <View style={styles.title}>
-      <Text> {text} </Text>
+      <Text style={styles.text}> {text} </Text>
     </View>
   );
 };
@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
     margin: 4,
   },
   text: {
-    fontSize: 20,
+    fontSize: 16,
+    fontWeight: "600",
   },
 });
 

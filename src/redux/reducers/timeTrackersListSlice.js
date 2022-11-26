@@ -2,39 +2,35 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const timeTrackersListSlice = createSlice({
   name: "activity",
-  initialState: { timeTrackersList: [] },
+  initialState: { timeTrackersList: [], activeTrackerStartTime: 0 },
   reducers: {
     addTimeTracker: (state, action) => {
       const newTimeTracker = {
         timeTrackerName: action.payload.timeTrackerName,
         timeTrackerId: new Date().getTime(),
         timeTrackerTotalTime: 0,
-        timeTrackerTimesList: [
-          {
-            timeTrackerStartTime: 0,
-            timeTrackerEndTime: 0,
-          },
-        ],
+        timeTrackerTimesList: [],
         isTimeTrackerActive: true,
       };
-      return {
-        ...state,
-        timeTrackersList: [newTimeTracker, ...state.timeTrackersList],
-      };
+      state.timeTrackersList.unshift(newTimeTracker);
     },
+    closeTimeTracker: (state, action) => {
+      const wantedTimeTracker = state.timeTrackersList.find(
+        (tracker) => tracker.timeTrackerId === action.payload.timeTrackerId
+      );
+
+      wantedTimeTracker.timeTrackerTimesList.unshift(
+        action.payload.timeTrackerTimes
+      );
+    },
+
     editTimeTracker: (state, action) => {
-      // console.log("action.payload", action.payload);
-      return {
-        ...state,
-        timeTrackersList: state.timeTrackersList.map((timeTracker, index) =>
-          timeTracker.timeTrackerId === action.payload.timeTrackerId
-            ? {
-                ...timeTracker,
-                isTimeTrackerActive: action.payload.isTimeTrackerActive,
-              }
-            : timeTracker
-        ),
-      };
+      const wantedTimeTracker = state.timeTrackersList.find(
+        (tracker) => tracker.timeTrackerId === action.payload.timeTrackerId
+      );
+
+      wantedTimeTracker.isTimeTrackerActive =
+        action.payload.isTimeTrackerActive;
     },
 
     deleteTimeTracker: (state, action) => {
@@ -47,18 +43,18 @@ export const timeTrackersListSlice = createSlice({
         ),
       };
     },
-    resetTimeTrackerList: (state, action) => {
-      console.log("reducers");
-      return {
-        ...state,
-        timeTrackersList: [],
-      };
+    resetTimeTrackerList: (state) => {
+      state.timeTrackersList = [];
     },
+  },
+  saveActiveTrackerStartTime: (state) => {
+    state.activeTrackerStartTime = new Date().getTime();
   },
 });
 
 export const {
   addTimeTracker,
+  closeTimeTracker,
   editTimeTracker,
   deleteTimeTracker,
   resetTimeTrackerList,
