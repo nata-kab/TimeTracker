@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import timeConverter from "../../../../helpers/timeConverter";
 
 const Timer = () => {
   const [timerTime, setTimerTime] = useState(0);
 
+  const counter = () => {
+    let time = timerTime;
+    ++time;
+    setTimerTime(time);
+  };
+
   useEffect(() => {
-    const timerCounter = setTimeout(() => {
-      let time = timerTime;
-      time++;
-      setTimerTime(time);
-    }, 1000);
+    const timerCounter = setTimeout(counter, 1000);
 
     return () => {
       clearTimeout(timerCounter);
@@ -18,7 +21,7 @@ const Timer = () => {
 
   return (
     <View style={styles.container}>
-      <Text> {timerTime} </Text>
+      <Text> {timeConverter(timerTime)} </Text>
     </View>
   );
 };

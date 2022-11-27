@@ -10,7 +10,9 @@ const timeConverter = (time) => {
   minutes = minutes < 10 ? "0" + minutes : minutes;
   seconds = seconds < 10 ? "0" + seconds : seconds;
 
-  return hours + ":" + minutes + ":" + seconds;
+  return hours == 0
+    ? minutes + ":" + seconds
+    : hours + ":" + minutes + ":" + seconds;
 
   //   year: 31536000000,
   //   month: 2592000000,
