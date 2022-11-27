@@ -2,6 +2,7 @@ import { string, func, oneOfType, number, bool, array } from "prop-types";
 import React from "react";
 
 import { Alert, Modal, ScrollView, StyleSheet, Text, View } from "react-native";
+import timeConverter from "../../../helpers/timeConverter";
 import ButtonHelper from "../ButtonHelper";
 import Title from "../Title";
 
@@ -17,6 +18,7 @@ const ModalWindow = ({
   if (!timeTrackerName) {
     return;
   }
+  console.log();
 
   return (
     <>
@@ -33,11 +35,12 @@ const ModalWindow = ({
           <Text>{timeTrackerName}</Text>
           <Text style={styles.modalText}>
             Total time:
-            {timeTrackerTotalTime}
+            {timeConverter(timeTrackerTotalTime)}
           </Text>
           <ScrollView style={styles.scrollView}>
             {timeTrackerTimesList.map((item, index) => (
               <View key={index} style={styles.scrollViewItem}>
+                <Text>Time: {timeConverter(item.timeTrackerDuration)}</Text>
                 <Text>Start time: {item.timeTrackerStartTime}</Text>
                 <Text>End time: {item.timeTrackerEndTime}</Text>
               </View>

@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Title from "../../Shared/Title";
 import Timer from "./Timer";
 import ButtonHelper from "../../Shared/ButtonHelper";
+import timeConverter from "../../../helpers/timeConverter";
 
 const ActiveTimeTracker = ({
   activeTimeTracker: { timeTrackerName, timeTrackerId, timeTrackerTotalTime },
@@ -29,6 +30,7 @@ const ActiveTimeTracker = ({
   };
 
   const editTrackersListItem = () => {
+    timeConverter();
     const endTime = new Date().getTime();
 
     const timeTrackerTimes = {
