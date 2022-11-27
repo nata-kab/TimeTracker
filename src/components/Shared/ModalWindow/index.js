@@ -1,10 +1,10 @@
-import { string, func, oneOfType, number, bool, array } from "prop-types";
+import { string, func, oneOfType, number, bool } from "prop-types";
 import React from "react";
 
 import { Alert, Modal, ScrollView, StyleSheet, Text, View } from "react-native";
+import dateConverter from "../../../helpers/dateConverter";
 import timeConverter from "../../../helpers/timeConverter";
 import ButtonHelper from "../ButtonHelper";
-import Title from "../Title";
 
 const ModalWindow = ({
   isModalVisible,
@@ -18,7 +18,6 @@ const ModalWindow = ({
   if (!timeTrackerName) {
     return;
   }
-  console.log();
 
   return (
     <>
@@ -43,8 +42,10 @@ const ModalWindow = ({
                 <Text>
                   Time: {timeConverter(item.timeTrackerDurationSeconds)}
                 </Text>
-                <Text>Start time: {item.timeTrackerStartTime}</Text>
-                <Text>End time: {item.timeTrackerEndTime}</Text>
+                <Text>
+                  Start time: {dateConverter(item.timeTrackerStartTime)}
+                </Text>
+                <Text>End time: {dateConverter(item.timeTrackerEndTime)}</Text>
               </View>
             ))}
           </ScrollView>
