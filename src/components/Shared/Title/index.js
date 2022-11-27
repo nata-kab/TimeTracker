@@ -26,7 +26,7 @@ Title.propTypes = {
   text: string,
 };
 Title.defaultProps = {
-  text: "nic nie ma",
+  text: "",
 };
 
 export default Title;

@@ -13,12 +13,5 @@ const timeConverter = (time) => {
   return hours == 0
     ? minutes + ":" + seconds
     : hours + ":" + minutes + ":" + seconds;
-
-  //   year: 31536000000,
-  //   month: 2592000000,
-  //   days: 86400000,
-  //   hours: 3600000,
-  //   minutes: 60000,
-  //   seconds: 1000,
 };
 export default timeConverter;

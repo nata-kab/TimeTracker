@@ -15,12 +15,16 @@ const dateConverter = (time) => {
   ];
 
   const date = new Date(time);
-  const seconds = date.getSeconds();
-  const minutes = date.getMinutes();
-  const hour = date.getHours();
+  let seconds = date.getSeconds();
+  let minutes = date.getMinutes();
+  let hour = date.getHours();
   const day = date.getDate();
   const month = date.getMonth();
   const year = date.getFullYear();
+
+  hour = hour < 10 ? "0" + hour : hour;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
 
   return (
     day +

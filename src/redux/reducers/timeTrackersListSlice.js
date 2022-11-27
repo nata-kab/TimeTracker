@@ -36,7 +36,6 @@ export const timeTrackersListSlice = createSlice({
     },
 
     deleteTimeTracker: (state, action) => {
-      // console.log("action.payload", action.payload);
       return {
         ...state,
         timeTrackersList: state.timeTrackersList.filter(
