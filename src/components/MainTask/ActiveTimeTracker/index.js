@@ -19,13 +19,13 @@ const ActiveTimeTracker = ({
     (state) => state.timeTrackersList
   );
   const calculateTime = (endTime) => {
-    const time = endTime - activeTrackerStartTime;
-
+    const time =
+      Math.floor(endTime / 1000) - Math.floor(activeTrackerStartTime / 1000);
     return time;
   };
 
-  const calculateTotalTime = (timeTrackerDuration) => {
-    const totalTime = timeTrackerDuration + timeTrackerTotalTime;
+  const calculateTotalTime = (timeTrackerDurationSeconds) => {
+    const totalTime = timeTrackerDurationSeconds + timeTrackerTotalTime;
     return totalTime;
   };
 
@@ -36,11 +36,11 @@ const ActiveTimeTracker = ({
     const timeTrackerTimes = {
       timeTrackerStartTime: activeTrackerStartTime,
       timeTrackerEndTime: endTime,
-      timeTrackerDuration: calculateTime(endTime),
+      timeTrackerDurationSeconds: calculateTime(endTime),
     };
 
     const timeTrackerTotalTime = calculateTotalTime(
-      timeTrackerTimes.timeTrackerDuration
+      timeTrackerTimes.timeTrackerDurationSeconds
     );
 
     dispatch(

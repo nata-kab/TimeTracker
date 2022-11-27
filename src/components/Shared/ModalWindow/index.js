@@ -40,7 +40,9 @@ const ModalWindow = ({
           <ScrollView style={styles.scrollView}>
             {timeTrackerTimesList.map((item, index) => (
               <View key={index} style={styles.scrollViewItem}>
-                <Text>Time: {timeConverter(item.timeTrackerDuration)}</Text>
+                <Text>
+                  Time: {timeConverter(item.timeTrackerDurationSeconds)}
+                </Text>
                 <Text>Start time: {item.timeTrackerStartTime}</Text>
                 <Text>End time: {item.timeTrackerEndTime}</Text>
               </View>
