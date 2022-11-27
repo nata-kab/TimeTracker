@@ -7,7 +7,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 import Title from "../../Shared/Title";
-import TimeRecord from "../../Shared/TimeRecord";
+import Timer from "./Timer";
 import ButtonHelper from "../../Shared/ButtonHelper";
 
 const ActiveTimeTracker = ({
@@ -64,7 +64,7 @@ const ActiveTimeTracker = ({
   return (
     <View style={styles.container}>
       <Title text={timeTrackerName} />
-      <TimeRecord activityTime={timeTrackerTotalTime} />
+      <Timer />
       <ButtonHelper
         buttonColor="#992600"
         iconName={"stop"}

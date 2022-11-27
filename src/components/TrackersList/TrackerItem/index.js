@@ -4,7 +4,6 @@ import { oneOfType, string, number, func } from "prop-types";
 
 import Title from "../../Shared/Title";
 import ButtonHelper from "../../Shared/ButtonHelper";
-import TimeRecord from "../../Shared/TimeRecord";
 
 const TrackerItem = ({
   item,
@@ -18,8 +17,7 @@ const TrackerItem = ({
       onPress={() => handleTimeTrackerModal(item)}
     >
       <Title text={timeTrackerName} />
-      <Text>Total time:</Text>
-      <TimeRecord activityTime={timeTrackerTotalTime} />
+      <Text>Total time: {timeTrackerTotalTime}</Text>
       <ButtonHelper
         iconName="play"
         buttonColor="#C0C0C0"

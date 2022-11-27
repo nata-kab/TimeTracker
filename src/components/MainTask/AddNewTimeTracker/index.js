@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 
 import {
   addTimeTracker,
@@ -7,7 +7,6 @@ import {
 } from "../../../redux/reducers/timeTrackersListSlice";
 import { useDispatch } from "react-redux";
 
-import TimeRecord from "../../Shared/TimeRecord";
 import ButtonHelper from "../../Shared/ButtonHelper";
 import TaskTitleInput from "./TaskTitleInput";
 
@@ -41,7 +40,7 @@ const AddNewTimeTracker = ({ handleTrackActivityTime }) => {
           setTitle={setTimeTrackerTitle}
         />
       </View>
-      <TimeRecord activityTime="00 : 00" />
+      <Text>00 : 00</Text>
       <ButtonHelper
         buttonColor="#1f7a1f"
         iconName={"play"}
