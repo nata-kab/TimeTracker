@@ -24,7 +24,6 @@ export const timeTrackersListSlice = createSlice({
       );
       wantedTimeTracker.timeTrackerTotalTime =
         action.payload.timeTrackerTotalTime;
-      console.log(wantedTimeTracker);
     },
 
     editTimeTracker: (state, action) => {

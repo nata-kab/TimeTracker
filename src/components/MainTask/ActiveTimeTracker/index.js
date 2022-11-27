@@ -28,37 +28,32 @@ const ActiveTimeTracker = ({
     return totalTime;
   };
 
-  const editTrackersListItem = (async) => {
-    try {
-      const endTime = new Date().getTime();
+  const editTrackersListItem = () => {
+    const endTime = new Date().getTime();
 
-      const timeTrackerTimes = {
-        timeTrackerStartTime: activeTrackerStartTime,
-        timeTrackerEndTime: endTime,
-        timeTrackerDuration: calculateTime(endTime),
-      };
+    const timeTrackerTimes = {
+      timeTrackerStartTime: activeTrackerStartTime,
+      timeTrackerEndTime: endTime,
+      timeTrackerDuration: calculateTime(endTime),
+    };
 
-      const timeTrackerTotalTime = calculateTotalTime(
-        timeTrackerTimes.timeTrackerDuration
-      );
+    const timeTrackerTotalTime = calculateTotalTime(
+      timeTrackerTimes.timeTrackerDuration
+    );
 
-      dispatch(
-        closeTimeTracker({
-          timeTrackerId: timeTrackerId,
-          timeTrackerTimes: timeTrackerTimes,
-          timeTrackerTotalTime: timeTrackerTotalTime,
-        })
-      );
-      dispatch(
-        editTimeTracker({
-          timeTrackerId: timeTrackerId,
-          isTimeTrackerActive: false,
-        })
-      );
-    } catch (e) {
-      console.log(`Saved data failed! : ${e}`);
-      return e;
-    }
+    dispatch(
+      closeTimeTracker({
+        timeTrackerId: timeTrackerId,
+        timeTrackerTimes: timeTrackerTimes,
+        timeTrackerTotalTime: timeTrackerTotalTime,
+      })
+    );
+    dispatch(
+      editTimeTracker({
+        timeTrackerId: timeTrackerId,
+        isTimeTrackerActive: false,
+      })
+    );
   };
 
   return (

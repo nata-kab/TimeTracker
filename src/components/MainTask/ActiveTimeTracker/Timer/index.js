@@ -6,7 +6,6 @@ const Timer = () => {
 
   useEffect(() => {
     const timerCounter = setTimeout(() => {
-      console.log(timerTime);
       let time = timerTime;
       time++;
       setTimerTime(time);
