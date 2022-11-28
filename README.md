@@ -1,8 +1,11 @@
-# Time Tracker project
+# Time Tracker
 
-This is repo for simple Time Tracker app
+## This is repo for Time Tracker React Native app
 
-## Geting started:
+Time tracker allows to count time even if the application is killed.
+You can display details of time tracker or run it again to count new record.
+
+## Getting started:
 
 Clone the repo:
 
@@ -10,7 +13,7 @@ Clone the repo:
 git clone https://github.com/nata-kab/TimeTracker.git
 ```
 
-and run sequentially:
+and then run sequentially:
 
 ```bash
 cd TimeTracker # go to the project's directory
