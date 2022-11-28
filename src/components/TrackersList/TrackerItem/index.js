@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
-import { oneOfType, string, number, func } from "prop-types";
+import { oneOfType, string, number, func, object } from "prop-types";
 
 import Title from "../../Shared/Title";
 import ButtonHelper from "../../Shared/ButtonHelper";
@@ -54,13 +54,15 @@ TrackerItem.propTypes = {
   timeTrackerName: string,
   timeTrackerId: oneOfType([string, number]),
   timeTrackerTotalTime: oneOfType([string, number]),
-  myParam: func,
+  handleEditTimeTracker: func.isRequired,
+  handleTimeTrackerModal: func.isRequired,
+  item: object,
 };
 TrackerItem.defaultProps = {
-  timeTrackerName: null,
+  timeTrackerName: "",
   timeTrackerId: null,
   timeTrackerTotalTime: null,
-  myParam: null,
+  item: null,
 };
 
 export default TrackerItem;

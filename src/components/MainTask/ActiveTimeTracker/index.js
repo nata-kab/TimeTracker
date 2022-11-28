@@ -10,6 +10,7 @@ import Title from "../../Shared/Title";
 import Timer from "./Timer";
 import ButtonHelper from "../../Shared/ButtonHelper";
 import calculateTime from "../../../helpers/calculateTime";
+import { number, string } from "prop-types";
 
 const ActiveTimeTracker = ({
   activeTimeTracker: { timeTrackerName, timeTrackerId, timeTrackerTotalTime },
@@ -82,5 +83,16 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 });
+
+ActiveTimeTracker.propTypes = {
+  timeTrackerId: number,
+  timeTrackerName: string,
+  timeTrackerTotalTime: number,
+};
+ActiveTimeTracker.defaultProps = {
+  timeTrackerId: null,
+  timeTrackerName: "",
+  timeTrackerTotalTime: null,
+};
 
 export default ActiveTimeTracker;

@@ -15,11 +15,12 @@ const TaskTitleInput = ({ title, setTitle }) => {
 };
 
 TaskTitleInput.propTypes = {
-  setTitle: func.isRequired,
+  setTitle: func,
   title: string,
 };
 
 TaskTitleInput.defaultProps = {
+  setTitle: null,
   title: null,
 };
 

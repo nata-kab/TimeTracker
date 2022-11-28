@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import timeConverter from "../../../../helpers/timeConverter";
 import { useSelector } from "react-redux";
 import calculateTime from "../../../../helpers/calculateTime";
+import { func, number, oneOfType } from "prop-types";
 
 const Timer = ({ currentEndTimeRef }) => {
   const { activeTrackerStartTime, timeTrackersList } = useSelector(

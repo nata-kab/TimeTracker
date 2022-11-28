@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 
 import ButtonHelper from "../../Shared/ButtonHelper";
 import TaskTitleInput from "./TaskTitleInput";
+import { func } from "prop-types";
 
 const AddNewTimeTracker = ({ handleTrackActivityTime }) => {
   const dispatch = useDispatch();
@@ -62,5 +63,12 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
+TaskTitleInput.propTypes = {
+  handleTrackActivityTime: func,
+};
+
+TaskTitleInput.defaultProps = {
+  handleTrackActivityTime: null,
+};
 
 export default AddNewTimeTracker;

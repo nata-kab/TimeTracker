@@ -7,7 +7,7 @@ import {
   editTimeTracker,
   saveActiveTrackerStartTime,
 } from "../../redux/reducers/timeTrackersListSlice";
-import ModalWindow from "../Shared/ModalWindow";
+import ModalWindow from "./ModalWindow";
 
 const TrackerList = () => {
   const [timeTrackerModalVisible, setTimeTrackerModalVisible] = useState(false);
