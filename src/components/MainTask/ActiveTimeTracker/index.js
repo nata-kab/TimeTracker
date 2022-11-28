@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { View, StyleSheet } from "react-native";
 import {
   editTimeTracker,
@@ -9,20 +9,16 @@ import { useDispatch, useSelector } from "react-redux";
 import Title from "../../Shared/Title";
 import Timer from "./Timer";
 import ButtonHelper from "../../Shared/ButtonHelper";
-import timeConverter from "../../../helpers/timeConverter";
+import calculateTime from "../../../helpers/calculateTime";
 
 const ActiveTimeTracker = ({
   activeTimeTracker: { timeTrackerName, timeTrackerId, timeTrackerTotalTime },
 }) => {
+  const currentEndTimeRef = useRef(0);
   const dispatch = useDispatch();
   const { activeTrackerStartTime } = useSelector(
     (state) => state.timeTrackersList
   );
-  const calculateTime = (endTime) => {
-    const time =
-      Math.floor(endTime / 1000) - Math.floor(activeTrackerStartTime / 1000);
-    return time;
-  };
 
   const calculateTotalTime = (timeTrackerDurationSeconds) => {
     const totalTime = timeTrackerDurationSeconds + timeTrackerTotalTime;
@@ -30,13 +26,13 @@ const ActiveTimeTracker = ({
   };
 
   const editTrackersListItem = () => {
-    timeConverter();
-    const endTime = new Date().getTime();
-
     const timeTrackerTimes = {
       timeTrackerStartTime: activeTrackerStartTime,
-      timeTrackerEndTime: endTime,
-      timeTrackerDurationSeconds: calculateTime(endTime),
+      timeTrackerEndTime: currentEndTimeRef.current,
+      timeTrackerDurationSeconds: calculateTime(
+        activeTrackerStartTime,
+        currentEndTimeRef.current
+      ),
     };
 
     const timeTrackerTotalTime = calculateTotalTime(
@@ -61,7 +57,7 @@ const ActiveTimeTracker = ({
   return (
     <View style={styles.container}>
       <Title text={timeTrackerName} />
-      <Timer />
+      <Timer currentEndTimeRef={currentEndTimeRef} />
       <ButtonHelper
         buttonColor="#992600"
         iconName={"stop"}

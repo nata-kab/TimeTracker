@@ -2,7 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const timeTrackersListSlice = createSlice({
   name: "activity",
-  initialState: { timeTrackersList: [], activeTrackerStartTime: 0 },
+  initialState: {
+    timeTrackersList: [],
+    activeTrackerStartTime: 0,
+  },
   reducers: {
     addTimeTracker: (state, action) => {
       const newTimeTracker = {
@@ -47,7 +50,7 @@ export const timeTrackersListSlice = createSlice({
     resetTimeTrackerList: (state) => {
       state.timeTrackersList = [];
     },
-    saveActiveTrackerStartTime: (state, action) => {
+    saveActiveTrackerStartTime: (state) => {
       state.activeTrackerStartTime = new Date().getTime();
     },
   },

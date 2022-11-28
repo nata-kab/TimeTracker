@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import timeConverter from "../../../../helpers/timeConverter";
+import { useSelector } from "react-redux";
+import calculateTime from "../../../../helpers/calculateTime";
 
-const Timer = () => {
+const Timer = ({ currentEndTimeRef }) => {
   const [timerTime, setTimerTime] = useState(0);
+  const { activeTrackerStartTime } = useSelector(
+    (state) => state.timeTrackersList
+  );
 
   const counter = () => {
-    let time = timerTime;
-    ++time;
+    currentEndTimeRef.current = new Date().getTime();
+    const time = calculateTime(
+      activeTrackerStartTime,
+      currentEndTimeRef.current
+    );
     setTimerTime(time);
   };
 

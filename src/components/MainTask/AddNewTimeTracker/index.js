@@ -20,14 +20,6 @@ const AddNewTimeTracker = ({ handleTrackActivityTime }) => {
       alert("Enter an activity title before adding !");
       return;
     }
-    const getStartTime = () => {
-      // const time = new Date().getTime();
-      // const minute = 1000 * 60;
-      // const hour = minute * 60;
-      // const day = hour * 24;
-      // const year = day * 365;
-    };
-
     dispatch(saveActiveTrackerStartTime());
     dispatch(addTimeTracker({ timeTrackerName: timeTrackerTitle }));
   };
