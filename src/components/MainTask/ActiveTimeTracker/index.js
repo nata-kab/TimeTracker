@@ -61,6 +61,8 @@ const ActiveTimeTracker = ({
       <ButtonHelper
         buttonColor="#992600"
         iconName={"stop"}
+        buttonWidth={55}
+        buttonHeight={55}
         onPress={editTrackersListItem}
       />
     </View>

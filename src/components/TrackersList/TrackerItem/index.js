@@ -11,6 +11,7 @@ const TrackerItem = ({
   item: { timeTrackerId, timeTrackerName, timeTrackerTotalTime },
   handleEditTimeTracker,
   handleTimeTrackerModal,
+  handleDeleteTimeTracker,
 }) => {
   return (
     <TouchableOpacity
@@ -18,11 +19,22 @@ const TrackerItem = ({
       onPress={() => handleTimeTrackerModal(item)}
     >
       <Title text={timeTrackerName} />
-      <Text>Total time: {timeConverter(timeTrackerTotalTime)}</Text>
+      <Text>
+        Total time:{"\n"} {timeConverter(timeTrackerTotalTime)}
+      </Text>
       <ButtonHelper
         iconName="play"
         buttonColor="#C0C0C0"
+        buttonWidth={48}
+        buttonHeight={48}
         onPress={() => handleEditTimeTracker(timeTrackerId)}
+      />
+      <ButtonHelper
+        iconName="remove"
+        buttonColor="#b22222"
+        buttonWidth={48}
+        buttonHeight={48}
+        onPress={() => handleDeleteTimeTracker(timeTrackerId)}
       />
     </TouchableOpacity>
   );

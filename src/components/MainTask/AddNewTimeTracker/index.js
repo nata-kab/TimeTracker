@@ -36,6 +36,8 @@ const AddNewTimeTracker = ({ handleTrackActivityTime }) => {
       <ButtonHelper
         buttonColor="#1f7a1f"
         iconName={"play"}
+        buttonWidth={55}
+        buttonHeight={55}
         onPress={handleAddTracker}
       />
     </View>

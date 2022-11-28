@@ -10,10 +10,13 @@ const ButtonHelper = ({
   iconName,
   borderRadius,
   buttonWidth,
+  buttonHeight,
 }) => {
   return (
     <TouchableOpacity
-      style={styles(buttonColor, borderRadius, buttonWidth).button}
+      style={
+        styles(buttonColor, borderRadius, buttonWidth, buttonHeight).button
+      }
       onPress={onPress}
     >
       {iconName && <FontAwesome name={iconName} size={18} color="#ffffff" />}
@@ -22,7 +25,7 @@ const ButtonHelper = ({
   );
 };
 
-const styles = (buttonColor, borderRadius, buttonWidth) =>
+const styles = (buttonColor, borderRadius, buttonWidth, buttonHeight) =>
   StyleSheet.create({
     button: {
       display: "flex",
@@ -31,10 +34,10 @@ const styles = (buttonColor, borderRadius, buttonWidth) =>
       justifyContent: "center",
       backgroundColor: buttonColor,
       width: buttonWidth,
-      height: 50,
+      height: buttonHeight,
       borderRadius: borderRadius,
-      margin: 5,
-      padding: 10,
+      margin: 7,
+      padding: 15,
     },
     text: {
       textAlign: "center",
@@ -48,6 +51,7 @@ ButtonHelper.propTypes = {
   buttonColor: string,
   borderRadius: number,
   buttonWidth: number,
+  buttonHeight: number,
 };
 
 ButtonHelper.defaultProps = {
@@ -57,6 +61,7 @@ ButtonHelper.defaultProps = {
   buttonColor: null,
   borderRadius: 50,
   buttonWidth: 50,
+  buttonHeight: 50,
 };
 
 export default ButtonHelper;
