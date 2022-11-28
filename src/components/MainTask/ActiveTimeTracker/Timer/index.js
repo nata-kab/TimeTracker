@@ -5,9 +5,22 @@ import { useSelector } from "react-redux";
 import calculateTime from "../../../../helpers/calculateTime";
 
 const Timer = ({ currentEndTimeRef }) => {
-  const [timerTime, setTimerTime] = useState(0);
-  const { activeTrackerStartTime } = useSelector(
+  const { activeTrackerStartTime, timeTrackersList } = useSelector(
     (state) => state.timeTrackersList
+  );
+
+  const startTime = () => {
+    const time = calculateTime(
+      activeTrackerStartTime,
+      currentEndTimeRef.current
+    );
+
+    return time;
+  };
+  const [timerTime, setTimerTime] = useState(startTime());
+
+  const activeTimeTracker = timeTrackersList.find(
+    (value) => value.isTimeTrackerActive
   );
 
   const counter = () => {
@@ -29,7 +42,12 @@ const Timer = ({ currentEndTimeRef }) => {
 
   return (
     <View style={styles.container}>
-      <Text> {timeConverter(timerTime)} </Text>
+      <Text>Time: {timeConverter(timerTime)}</Text>
+      {activeTimeTracker.timeTrackerTotalTime !== 0 && (
+        <Text style={styles.previousTime}>
+          Previous time: {timeConverter(activeTimeTracker.timeTrackerTotalTime)}
+        </Text>
+      )}
     </View>
   );
 };
@@ -37,8 +55,14 @@ const Timer = ({ currentEndTimeRef }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    flexDirection: "column",
+    alignItems: "flex-start",
     margin: 4,
+  },
+  previousTime: {
+    fontSize: 11,
+    fontWeight: "300",
+    color: "rgb(20, 20, 20)",
   },
 });
 

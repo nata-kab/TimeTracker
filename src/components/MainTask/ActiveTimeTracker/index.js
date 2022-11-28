@@ -14,7 +14,7 @@ import calculateTime from "../../../helpers/calculateTime";
 const ActiveTimeTracker = ({
   activeTimeTracker: { timeTrackerName, timeTrackerId, timeTrackerTotalTime },
 }) => {
-  const currentEndTimeRef = useRef(0);
+  const currentEndTimeRef = useRef(new Date().getTime());
   const dispatch = useDispatch();
   const { activeTrackerStartTime } = useSelector(
     (state) => state.timeTrackersList

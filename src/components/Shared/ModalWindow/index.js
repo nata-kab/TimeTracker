@@ -31,7 +31,7 @@ const ModalWindow = ({
         }}
       >
         <View style={styles.modalView}>
-          <Text>{timeTrackerName}</Text>
+          <Text style={styles.modalHeader}>{timeTrackerName}</Text>
           <Text style={styles.modalText}>
             Total time:
             {timeConverter(timeTrackerTotalTime)}
@@ -102,6 +102,10 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     padding: 5,
     textAlign: "center",
+  },
+  modalHeader: {
+    fontSize: 18,
+    fontWeight: "600",
   },
 });
 

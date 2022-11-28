@@ -17,6 +17,7 @@ export const timeTrackersListSlice = createSlice({
       };
       state.timeTrackersList.unshift(newTimeTracker);
     },
+
     closeTimeTracker: (state, action) => {
       const wantedTimeTracker = state.timeTrackersList.find(
         (tracker) => tracker.timeTrackerId === action.payload.timeTrackerId
@@ -38,18 +39,10 @@ export const timeTrackersListSlice = createSlice({
         action.payload.isTimeTrackerActive;
     },
 
-    deleteTimeTracker: (state, action) => {
-      return {
-        ...state,
-        timeTrackersList: state.timeTrackersList.filter(
-          (timeTrackerItem) =>
-            timeTrackerItem.timeTrackerId !== action.payload.timeTrackerId
-        ),
-      };
-    },
     resetTimeTrackerList: (state) => {
       state.timeTrackersList = [];
     },
+
     saveActiveTrackerStartTime: (state) => {
       state.activeTrackerStartTime = new Date().getTime();
     },
@@ -60,7 +53,6 @@ export const {
   addTimeTracker,
   closeTimeTracker,
   editTimeTracker,
-  deleteTimeTracker,
   resetTimeTrackerList,
   saveActiveTrackerStartTime,
 } = timeTrackersListSlice.actions;

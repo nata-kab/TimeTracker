@@ -32,7 +32,7 @@ const AddNewTimeTracker = ({ handleTrackActivityTime }) => {
           setTitle={setTimeTrackerTitle}
         />
       </View>
-      <Text>00 : 00</Text>
+      <Text>00:00</Text>
       <ButtonHelper
         buttonColor="#1f7a1f"
         iconName={"play"}

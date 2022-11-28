@@ -6,7 +6,6 @@ import TrackerItem from "./TrackerItem";
 import {
   editTimeTracker,
   saveActiveTrackerStartTime,
-  deleteTimeTracker,
 } from "../../redux/reducers/timeTrackersListSlice";
 import ModalWindow from "../Shared/ModalWindow";
 
@@ -41,13 +40,6 @@ const TrackerList = () => {
     timeTrackerDataToDisplayRef.current = timeTrackerDataToDisplay;
     setTimeTrackerModalVisible(!timeTrackerModalVisible);
   };
-  const handleDeleteTimeTracker = (timeTrackerId) => {
-    dispatch(
-      deleteTimeTracker({
-        timeTrackerId: timeTrackerId,
-      })
-    );
-  };
 
   return (
     <>
@@ -60,7 +52,6 @@ const TrackerList = () => {
               item={item}
               handleEditTimeTracker={handleEditTimeTracker}
               handleTimeTrackerModal={handleTimeTrackerModal}
-              handleDeleteTimeTracker={handleDeleteTimeTracker}
             />
           )}
           keyExtractor={(item) => item.timeTrackerId}
