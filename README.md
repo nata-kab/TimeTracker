@@ -1,11 +1,12 @@
-# Time Tracker
+# ⏳ Time Tracker
 
 ## This is repo for Time Tracker React Native app
 
-Time tracker allows to count time even if the application is killed.
-You can display details of time tracker or run it again to count new record.
+Time tracker allows backing to count time even if the application is killed 🥳.
+You can display details of the time tracker or run it again to count new record.
+You can save multiple sessions for a single time tracker. You can also check detailed information for all sessions in a modal window.
 
-## Getting started:
+## 🚀 Getting started:
 
 Clone the repo:
 
