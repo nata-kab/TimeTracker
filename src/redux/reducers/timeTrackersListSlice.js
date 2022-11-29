@@ -18,7 +18,7 @@ export const timeTrackersListSlice = createSlice({
       state.timeTrackersList.unshift(newTimeTracker);
     },
 
-    closeTimeTracker: (state, action) => {
+    addTimeTrackerData: (state, action) => {
       const wantedTimeTracker = state.timeTrackersList.find(
         (tracker) => tracker.timeTrackerId === action.payload.timeTrackerId
       );
@@ -52,7 +52,7 @@ export const timeTrackersListSlice = createSlice({
 
 export const {
   addTimeTracker,
-  closeTimeTracker,
+  addTimeTrackerData,
   editTimeTracker,
   resetTimeTrackerList,
   saveActiveTrackerStartTime,

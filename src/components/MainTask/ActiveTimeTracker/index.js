@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { View, StyleSheet } from "react-native";
 import {
   editTimeTracker,
-  closeTimeTracker,
+  addTimeTrackerData,
 } from "../../../redux/reducers/timeTrackersListSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { number, string } from "prop-types";
@@ -37,7 +37,7 @@ const ActiveTimeTracker = ({
     };
 
     dispatch(
-      closeTimeTracker({
+      addTimeTrackerData({
         timeTrackerId: timeTrackerId,
         timeTrackerTimes: timeTrackerTimes,
         timeTrackerTotalTime: calculateTotalTime(

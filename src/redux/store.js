@@ -1,4 +1,4 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   persistReducer,
@@ -19,12 +19,7 @@ const persistConfig = {
   storage: AsyncStorage,
 };
 
-// const rootReducer = combineReducers({
-//   timeTrackersList: timeTrackersListReducer,
-// });
-
 const persistedReducer = persistReducer(persistConfig, timeTrackersListReducer);
-console.log(persistedReducer);
 
 const store = configureStore({
   reducer: persistedReducer,
