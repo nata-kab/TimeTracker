@@ -7,7 +7,7 @@ import {
 import { useDispatch } from "react-redux";
 
 import ButtonHelper from "../../Shared/ButtonHelper";
-import TaskTitleInput from "./TitleInput";
+import TitleInput from "./TitleInput";
 
 const AddNewTimeTracker = () => {
   const timeTrackerTitleRef = useRef("");
