@@ -1,7 +1,7 @@
 import { string, func, oneOfType, number, bool, array } from "prop-types";
 import React from "react";
-
 import { Alert, Modal, ScrollView, StyleSheet, Text, View } from "react-native";
+
 import dateConverter from "../../../helpers/dateConverter";
 import timeConverter from "../../../helpers/timeConverter";
 import ButtonHelper from "../../Shared/ButtonHelper";
