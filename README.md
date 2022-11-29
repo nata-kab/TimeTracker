@@ -14,11 +14,17 @@ Clone the repo:
 git clone https://github.com/nata-kab/TimeTracker.git
 ```
 
-and then run sequentially:
+and then:
 
 ```bash
-cd TimeTracker # go to the project's directory
-npm i # install all required dependencies
+cd TimeTracker
+npm i
+cd ios && pod install && cd ..
+```
+
+and to run project:
+
+```bash
 npx react-native start # starts Metro Bundler
 npx react-native run-android # run app on android device / simulator
 npx react-native run-ios # run app on iOS device / simulator

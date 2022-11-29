@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import { View, StyleSheet, Text } from "react-native";
-
 import {
   addTimeTracker,
   saveActiveTrackerStartTime,
@@ -8,30 +7,28 @@ import {
 import { useDispatch } from "react-redux";
 
 import ButtonHelper from "../../Shared/ButtonHelper";
-import TaskTitleInput from "./TaskTitleInput";
-import { func } from "prop-types";
+import TaskTitleInput from "./TitleInput";
 
-const AddNewTimeTracker = ({ handleTrackActivityTime }) => {
+const AddNewTimeTracker = () => {
+  const timeTrackerTitleRef = useRef("");
+
   const dispatch = useDispatch();
 
-  const [timeTrackerTitle, setTimeTrackerTitle] = useState("");
-
   const handleAddTracker = () => {
-    if (timeTrackerTitle === "") {
+    if (timeTrackerTitleRef.current === "") {
       alert("Enter an activity title before adding !");
       return;
     }
+
     dispatch(saveActiveTrackerStartTime());
-    dispatch(addTimeTracker({ timeTrackerName: timeTrackerTitle }));
+
+    dispatch(addTimeTracker({ timeTrackerName: timeTrackerTitleRef.current }));
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
-        <TaskTitleInput
-          title={timeTrackerTitle}
-          setTitle={setTimeTrackerTitle}
-        />
+        <TitleInput timeTrackerTitleRef={timeTrackerTitleRef} />
       </View>
       <Text>00:00</Text>
       <ButtonHelper
@@ -63,12 +60,5 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
-TaskTitleInput.propTypes = {
-  handleTrackActivityTime: func,
-};
-
-TaskTitleInput.defaultProps = {
-  handleTrackActivityTime: null,
-};
 
 export default AddNewTimeTracker;

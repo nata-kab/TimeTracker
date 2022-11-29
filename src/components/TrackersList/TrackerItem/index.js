@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, TouchableOpacity, Text } from "react-native";
 import { oneOfType, string, number, func, object } from "prop-types";
 
 import Title from "../../Shared/Title";
@@ -58,6 +58,7 @@ TrackerItem.propTypes = {
   handleTimeTrackerModal: func.isRequired,
   item: object,
 };
+
 TrackerItem.defaultProps = {
   timeTrackerName: "",
   timeTrackerId: null,

@@ -5,24 +5,26 @@ import {
   closeTimeTracker,
 } from "../../../redux/reducers/timeTrackersListSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { number, string } from "prop-types";
 
 import Title from "../../Shared/Title";
 import Timer from "./Timer";
 import ButtonHelper from "../../Shared/ButtonHelper";
 import calculateTime from "../../../helpers/calculateTime";
-import { number, string } from "prop-types";
 
 const ActiveTimeTracker = ({
   activeTimeTracker: { timeTrackerName, timeTrackerId, timeTrackerTotalTime },
 }) => {
   const currentEndTimeRef = useRef(new Date().getTime());
-  const dispatch = useDispatch();
   const { activeTrackerStartTime } = useSelector(
     (state) => state.timeTrackersList
   );
 
+  const dispatch = useDispatch();
+
   const calculateTotalTime = (timeTrackerDurationSeconds) => {
     const totalTime = timeTrackerDurationSeconds + timeTrackerTotalTime;
+
     return totalTime;
   };
 
@@ -36,17 +38,16 @@ const ActiveTimeTracker = ({
       ),
     };
 
-    const timeTrackerTotalTime = calculateTotalTime(
-      timeTrackerTimes.timeTrackerDurationSeconds
-    );
-
     dispatch(
       closeTimeTracker({
         timeTrackerId: timeTrackerId,
         timeTrackerTimes: timeTrackerTimes,
-        timeTrackerTotalTime: timeTrackerTotalTime,
+        timeTrackerTotalTime: calculateTotalTime(
+          timeTrackerTimes.timeTrackerDurationSeconds
+        ),
       })
     );
+
     dispatch(
       editTimeTracker({
         timeTrackerId: timeTrackerId,
@@ -89,6 +90,7 @@ ActiveTimeTracker.propTypes = {
   timeTrackerName: string,
   timeTrackerTotalTime: number,
 };
+
 ActiveTimeTracker.defaultProps = {
   timeTrackerId: null,
   timeTrackerName: "",

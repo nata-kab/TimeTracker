@@ -3,22 +3,19 @@ import { View, Text, StyleSheet } from "react-native";
 import timeConverter from "../../../../helpers/timeConverter";
 import { useSelector } from "react-redux";
 import calculateTime from "../../../../helpers/calculateTime";
-import { func, number, oneOfType } from "prop-types";
+import { func, number, oneOfType, object } from "prop-types";
 
 const Timer = ({ currentEndTimeRef }) => {
   const { activeTrackerStartTime, timeTrackersList } = useSelector(
     (state) => state.timeTrackersList
   );
 
-  const startTime = () => {
-    const time = calculateTime(
-      activeTrackerStartTime,
-      currentEndTimeRef.current
-    );
+  const startTime = calculateTime(
+    activeTrackerStartTime,
+    currentEndTimeRef.current
+  );
 
-    return time;
-  };
-  const [timerTime, setTimerTime] = useState(startTime());
+  const [timerTime, setTimerTime] = useState(startTime);
 
   const activeTimeTracker = timeTrackersList.find(
     (value) => value.isTimeTrackerActive
@@ -26,10 +23,12 @@ const Timer = ({ currentEndTimeRef }) => {
 
   const counter = () => {
     currentEndTimeRef.current = new Date().getTime();
+
     const time = calculateTime(
       activeTrackerStartTime,
       currentEndTimeRef.current
     );
+
     setTimerTime(time);
   };
 
@@ -66,5 +65,13 @@ const styles = StyleSheet.create({
     color: "rgb(20, 20, 20)",
   },
 });
+
+Timer.propTypes = {
+  timeTrackerTitleRef: oneOfType([func, object, number]),
+};
+
+Timer.defaultProps = {
+  timeTrackerTitleRef: null,
+};
 
 export default Timer;

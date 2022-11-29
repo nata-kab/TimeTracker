@@ -41,6 +41,7 @@ export const timeTrackersListSlice = createSlice({
 
     resetTimeTrackerList: (state) => {
       state.timeTrackersList = [];
+      state.activeTrackerStartTime = 0;
     },
 
     saveActiveTrackerStartTime: (state) => {

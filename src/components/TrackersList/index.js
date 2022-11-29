@@ -1,19 +1,20 @@
 import React, { useRef, useState } from "react";
 import { FlatList, StyleSheet } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
-import Title from "../Shared/Title";
-import TrackerItem from "./TrackerItem";
 import {
   editTimeTracker,
   saveActiveTrackerStartTime,
 } from "../../redux/reducers/timeTrackersListSlice";
+
 import ModalWindow from "./ModalWindow";
+import Title from "../Shared/Title";
+import TrackerItem from "./TrackerItem";
 
 const TrackerList = () => {
   const [timeTrackerModalVisible, setTimeTrackerModalVisible] = useState(false);
   const timeTrackerDataToDisplayRef = useRef({});
-
   const { timeTrackersList } = useSelector((state) => state.timeTrackersList);
+
   const dispatch = useDispatch();
 
   const inactiveTrackersList = timeTrackersList.filter(
@@ -28,6 +29,7 @@ const TrackerList = () => {
       return;
     }
     dispatch(saveActiveTrackerStartTime());
+
     dispatch(
       editTimeTracker({
         timeTrackerId: timeTrackerId,
@@ -38,6 +40,7 @@ const TrackerList = () => {
 
   const handleTimeTrackerModal = (timeTrackerDataToDisplay) => {
     timeTrackerDataToDisplayRef.current = timeTrackerDataToDisplay;
+
     setTimeTrackerModalVisible(!timeTrackerModalVisible);
   };
 

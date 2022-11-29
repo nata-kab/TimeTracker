@@ -10,9 +10,6 @@ import TrackersList from "../TrackersList";
 const GeneralScreen = () => {
   const dispatch = useDispatch();
 
-  const handleDeleteAllTimeTrackerList = () => {
-    dispatch(resetTimeTrackerList());
-  };
   return (
     <SafeAreaView style={styles.appContainer}>
       <View style={styles.container}>
@@ -22,7 +19,7 @@ const GeneralScreen = () => {
           buttonColor="#b22222"
           borderRadius={10}
           buttonWidth={100}
-          onPress={handleDeleteAllTimeTrackerList}
+          onPress={() => dispatch(resetTimeTrackerList())}
         >
           Clear all
         </ButtonHelper>
@@ -30,6 +27,7 @@ const GeneralScreen = () => {
     </SafeAreaView>
   );
 };
+
 const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
