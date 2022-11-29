@@ -13,7 +13,7 @@ import TrackerItem from "./TrackerItem";
 const TrackerList = () => {
   const [timeTrackerModalVisible, setTimeTrackerModalVisible] = useState(false);
   const timeTrackerDataToDisplayRef = useRef({});
-  const { timeTrackersList } = useSelector((state) => state.timeTrackersList);
+  const { timeTrackersList } = useSelector((state) => state);
 
   const dispatch = useDispatch();
 

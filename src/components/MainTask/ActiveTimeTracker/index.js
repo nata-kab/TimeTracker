@@ -16,9 +16,7 @@ const ActiveTimeTracker = ({
   activeTimeTracker: { timeTrackerName, timeTrackerId, timeTrackerTotalTime },
 }) => {
   const currentEndTimeRef = useRef(new Date().getTime());
-  const { activeTrackerStartTime } = useSelector(
-    (state) => state.timeTrackersList
-  );
+  const { activeTrackerStartTime } = useSelector((state) => state);
 
   const dispatch = useDispatch();
 

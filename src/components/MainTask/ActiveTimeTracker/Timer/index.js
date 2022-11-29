@@ -7,7 +7,7 @@ import { func, number, oneOfType, object } from "prop-types";
 
 const Timer = ({ currentEndTimeRef }) => {
   const { activeTrackerStartTime, timeTrackersList } = useSelector(
-    (state) => state.timeTrackersList
+    (state) => state
   );
 
   const startTime = calculateTime(

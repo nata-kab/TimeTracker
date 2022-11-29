@@ -19,11 +19,12 @@ const persistConfig = {
   storage: AsyncStorage,
 };
 
-const rootReducer = combineReducers({
-  timeTrackersList: timeTrackersListReducer,
-});
+// const rootReducer = combineReducers({
+//   timeTrackersList: timeTrackersListReducer,
+// });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig, timeTrackersListReducer);
+console.log(persistedReducer);
 
 const store = configureStore({
   reducer: persistedReducer,
