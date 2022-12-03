@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
   title: {
     flex: 1,
     alignItems: "flex-start",
-    margin: 4,
+    marginLeft: 15,
+    marginRight: 15,
   },
   text: {
     fontSize: 16,
