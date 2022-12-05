@@ -21,7 +21,7 @@ const TrackerItem = ({
       <Text style={styles.time}>{timeConverter(timeTrackerTotalTime)}</Text>
       <ButtonHelper
         iconName="play"
-        buttonColor="#C0C0C0"
+        buttonColor="khaki"
         buttonWidth={48}
         buttonHeight={48}
         onPress={() => handleEditTimeTracker(timeTrackerId)}
@@ -35,31 +35,32 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    // justifyContent: "space-between",
     maxWidth: "95%",
     backgroundColor: "#ffffff",
     margin: 7,
     paddingVertical: 10,
     paddingHorizontal: 5,
     borderRadius: 20,
-    shadowColor: "#000",
+    shadowColor: "#A0A0A0",
     shadowOffset: {
       width: 0,
       height: 3,
     },
-    shadowOpacity: 0.27,
-    shadowRadius: 4.65,
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
 
-    elevation: 6,
+    elevation: 5,
   },
   time: {
     display: "flex",
     justifyContent: "center",
+    alignItems: "center",
     marginRight: 15,
     marginLeft: 15,
-    backgroundColor: "#F5F5F5",
-    padding: 5,
-    alignItems: "center",
+    backgroundColor: "#F0F0F0",
+    padding: 7,
+    borderRadius: 10,
+    overflow: "hidden",
   },
 });
 

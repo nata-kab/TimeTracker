@@ -30,14 +30,16 @@ const AddNewTimeTracker = () => {
       <View style={styles.inputContainer}>
         <TitleInput timeTrackerTitleRef={timeTrackerTitleRef} />
       </View>
-      <Text>00:00</Text>
-      <ButtonHelper
-        buttonColor="#1f7a1f"
-        iconName={"play"}
-        buttonWidth={55}
-        buttonHeight={55}
-        onPress={handleAddTracker}
-      />
+      <Text style={styles.text}>00:00</Text>
+      <View style={styles.buttonContainer}>
+        <ButtonHelper
+          buttonColor="#1f7a1f"
+          iconName={"play"}
+          buttonWidth={55}
+          buttonHeight={55}
+          onPress={handleAddTracker}
+        />
+      </View>
     </View>
   );
 };
@@ -45,18 +47,37 @@ const AddNewTimeTracker = () => {
 const styles = StyleSheet.create({
   container: {
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     alignItems: "center",
-    justifyContent: "space-between",
-    width: "98%",
-    backgroundColor: "#faf7d9",
-    margin: 5,
-    padding: 10,
-    borderRadius: 10,
+    justifyContent: "center",
+    width: "100%",
+    backgroundColor: "#ffccd5",
+    padding: 30,
+    borderBottomRightRadius: 20,
+    borderBottomLeftRadius: 20,
+    marginBottom: 35,
+    shadowColor: "#A0A0A0",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
+  },
+  buttonContainer: {
+    alignSelf: "center",
+    bottom: -27,
+    right: 20,
+    position: "absolute",
   },
   inputContainer: {
-    width: "45%",
-    margin: 5,
+    alignItems: "center",
+    padding: 5,
+  },
+  text: {
+    fontSize: 20,
     padding: 10,
   },
 });

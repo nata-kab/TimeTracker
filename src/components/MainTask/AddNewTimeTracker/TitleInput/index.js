@@ -1,6 +1,6 @@
 import { func, oneOfType, object, string } from "prop-types";
 import React from "react";
-import { TextInput } from "react-native";
+import { TextInput, StyleSheet } from "react-native";
 
 const TitleInput = ({ timeTrackerTitleRef }) => {
   return (
@@ -9,9 +9,16 @@ const TitleInput = ({ timeTrackerTitleRef }) => {
       placeholder="Add activity title"
       maxLength={40}
       multiline={true}
+      style={styles.input}
     />
   );
 };
+
+const styles = StyleSheet.create({
+  input: {
+    fontSize: 16,
+  },
+});
 
 TitleInput.propTypes = {
   timeTrackerTitleRef: oneOfType([func, object, string]),
