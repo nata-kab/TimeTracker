@@ -1,10 +1,11 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
 import { oneOfType, string, number, func, object } from "prop-types";
 
 import Title from "../../Shared/Title";
 import ButtonHelper from "../../Shared/ButtonHelper";
 import timeConverter from "../../../helpers/timeConverter";
+import sharedStyles from "../../../styles/sharedStyles";
 
 const TrackerItem = ({
   item,
@@ -17,7 +18,9 @@ const TrackerItem = ({
       style={styles.listItem}
       onPress={() => handleTimeTrackerModal(item)}
     >
-      <Title text={timeTrackerName} />
+      <View style={sharedStyles.timeTrackerListTitle}>
+        <Title text={timeTrackerName} />
+      </View>
       <Text style={styles.time}>{timeConverter(timeTrackerTotalTime)}</Text>
       <ButtonHelper
         iconName="play"

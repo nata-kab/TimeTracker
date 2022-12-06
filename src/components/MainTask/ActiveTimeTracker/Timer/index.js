@@ -5,6 +5,7 @@ import { func, number, oneOfType, object } from "prop-types";
 
 import calculateTime from "../../../../helpers/calculateTime";
 import timeConverter from "../../../../helpers/timeConverter";
+import sharedStyles from "../../../../styles/sharedStyles";
 
 const Timer = ({ currentEndTimeRef }) => {
   const { activeTrackerStartTime, timeTrackersList } = useSelector(
@@ -43,7 +44,7 @@ const Timer = ({ currentEndTimeRef }) => {
 
   return (
     <View style={styles.container}>
-      <Text>Time: {timeConverter(timerTime)}</Text>
+      <Text style={sharedStyles.activeTime}>{timeConverter(timerTime)}</Text>
       {activeTimeTracker.timeTrackerTotalTime !== 0 && (
         <Text style={styles.previousTime}>
           Previous time: {timeConverter(activeTimeTracker.timeTrackerTotalTime)}
@@ -57,13 +58,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    alignItems: "flex-start",
-    margin: 4,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 35,
   },
   previousTime: {
     fontSize: 11,
     fontWeight: "300",
-    color: "rgb(20, 20, 20)",
+    color: "white",
   },
 });
 

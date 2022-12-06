@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { View, StyleSheet, Text, ImageBackground } from "react-native";
+import { View, Text, ImageBackground } from "react-native";
 import {
   addTimeTracker,
   saveActiveTrackerStartTime,
@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import ButtonHelper from "../../Shared/ButtonHelper";
 import TitleInput from "./TitleInput";
 import roundedGradient from "../../../../assets/roundedGradient.png";
+import sharedStyles from "../../../styles/sharedStyles";
 
 const AddNewTimeTracker = () => {
   const timeTrackerTitleRef = useRef("");
@@ -27,18 +28,18 @@ const AddNewTimeTracker = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={sharedStyles.timeTrackerContainer}>
       <ImageBackground
         source={roundedGradient}
         resizeMode="cover"
-        style={styles.image}
+        style={sharedStyles.backgroundImage}
       >
-        <View style={styles.inputContainer}>
+        <View style={sharedStyles.inputContainer}>
           <TitleInput timeTrackerTitleRef={timeTrackerTitleRef} />
         </View>
-        <Text style={styles.text}>00:00</Text>
+        <Text style={sharedStyles.time}>00:00</Text>
       </ImageBackground>
-      <View style={styles.buttonContainer}>
+      <View style={sharedStyles.timeTrackerButtonContainer}>
         <ButtonHelper
           buttonColor="darkcyan"
           iconName={"play"}
@@ -50,65 +51,5 @@ const AddNewTimeTracker = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    flex: 0,
-    width: "100%",
-    height: 180,
-    borderBottomRightRadius: 20,
-    borderBottomLeftRadius: 20,
-
-    shadowColor: "#333",
-    shadowOffset: {
-      width: 0,
-      height: 11,
-    },
-    shadowOpacity: 0.55,
-    shadowRadius: 14.78,
-
-    elevation: 10,
-  },
-  buttonContainer: {
-    alignSelf: "center",
-    bottom: -27,
-    right: 22,
-    position: "absolute",
-  },
-  inputContainer: {
-    display: "flex",
-    marginTop: 45,
-    alignItems: "center",
-    backgroundColor: "rgba(100,100,100, 0.15)",
-    borderRadius: 20,
-    overflow: "hidden",
-    justifyContent: "center",
-    paddingHorizontal: 14,
-    paddingVertical: 7,
-  },
-  text: {
-    display: "flex",
-    fontSize: 45,
-    marginBottom: 35,
-    color: "white",
-    fontStyle: "italic",
-  },
-  image: {
-    display: "flex",
-    flexShrink: 0,
-    justifyContent: "space-around",
-    alignItems: "center",
-    flexDirection: "column",
-    width: "100%",
-    height: " 100%",
-    borderBottomRightRadius: 20,
-    borderBottomLeftRadius: 20,
-    overflow: "hidden",
-    backgroundColor: "rgba(0,0,0,1)",
-    opacity: 0.85,
-  },
-});
 
 export default AddNewTimeTracker;
