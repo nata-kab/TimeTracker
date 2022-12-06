@@ -19,7 +19,7 @@ const ButtonHelper = ({
       }
       onPress={onPress}
     >
-      {iconName && <FontAwesome name={iconName} size={18} color="#ffffff" />}
+      {iconName && <FontAwesome name={iconName} size={19} color="#ffffff" />}
       {children && <Text>{children}</Text>}
     </TouchableOpacity>
   );

@@ -40,7 +40,7 @@ const AddNewTimeTracker = () => {
       </ImageBackground>
       <View style={styles.buttonContainer}>
         <ButtonHelper
-          buttonColor="#1f7a1f"
+          buttonColor="#004CAD"
           iconName={"play"}
           buttonWidth={55}
           buttonHeight={55}
@@ -55,39 +55,45 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     flexDirection: "column",
-    flex: 1,
+    flex: 0,
     flexShrink: 0,
-    flexBasis: "20%",
+    flexBasis: "24%",
     minHeight: 140,
     width: "100%",
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,
-    marginBottom: 40,
-    shadowColor: "#A0A0A0",
+    shadowColor: "#333",
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 11,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+    shadowOpacity: 0.55,
+    shadowRadius: 14.78,
 
-    elevation: 5,
+    elevation: 24,
   },
   buttonContainer: {
     alignSelf: "center",
     bottom: -27,
-    right: 20,
+    right: 22,
     position: "absolute",
   },
   inputContainer: {
     display: "flex",
-    marginTop: 20,
+    marginTop: 45,
+    alignItems: "center",
+    backgroundColor: "rgba(200,200,200, 0.3)",
+    borderRadius: 20,
     overflow: "hidden",
+    justifyContent: "center",
+    paddingHorizontal: 14,
+    paddingVertical: 7,
   },
   text: {
     display: "flex",
-    fontSize: 30,
-    marginBottom: 25,
+    fontSize: 40,
+    marginBottom: 35,
+    marginTop: 20,
     color: "white",
     fontStyle: "italic",
   },

@@ -10,6 +10,7 @@ const TitleInput = ({ timeTrackerTitleRef }) => {
       maxLength={40}
       multiline={true}
       style={styles.input}
+      placeholderTextColor="#ffffff"
     />
   );
 };
@@ -17,10 +18,9 @@ const TitleInput = ({ timeTrackerTitleRef }) => {
 const styles = StyleSheet.create({
   input: {
     fontSize: 16,
-    backgroundColor: "rgba(100,100,100, 0.2)",
+    color: "#ffffff",
     borderRadius: 20,
     textAlign: "center",
-    padding: 7,
   },
 });
 

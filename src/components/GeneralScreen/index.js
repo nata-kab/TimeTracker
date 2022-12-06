@@ -1,5 +1,5 @@
 import React from "react";
-import { View, SafeAreaView, StyleSheet } from "react-native";
+import { View, SafeAreaView, StyleSheet, StatusBar } from "react-native";
 import { useDispatch } from "react-redux";
 import { resetTimeTrackerList } from "../../redux/reducers/timeTrackersListSlice";
 
@@ -12,17 +12,17 @@ const GeneralScreen = () => {
 
   return (
     <SafeAreaView style={styles.appContainer}>
+      <StatusBar translucent backgroundColor="#7A5612" />
       <View style={styles.container}>
         <MainTask />
         <TrackersList />
-        <ButtonHelper
-          buttonColor="#b22222"
-          borderRadius={10}
-          buttonWidth={100}
-          onPress={() => dispatch(resetTimeTrackerList())}
-        >
-          Clear all
-        </ButtonHelper>
+        <View style={styles.buttonContainer}>
+          <ButtonHelper
+            buttonColor="silver"
+            iconName="trash-o"
+            onPress={() => dispatch(resetTimeTrackerList())}
+          />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -37,6 +37,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#f5f5f5",
     justifyContent: "space-between",
     alignItems: "center",
+  },
+  buttonContainer: {
+    backgroundColor: "transparent",
+    alignSelf: "center",
+    bottom: 10,
+    right: 22,
+    position: "absolute",
   },
 });
 
