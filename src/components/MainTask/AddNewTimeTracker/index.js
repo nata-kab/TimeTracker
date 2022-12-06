@@ -12,7 +12,6 @@ import roundedGradient from "../../../../assets/roundedGradient.png";
 
 const AddNewTimeTracker = () => {
   const timeTrackerTitleRef = useRef("");
-  console.log(roundedGradient);
 
   const dispatch = useDispatch();
 
