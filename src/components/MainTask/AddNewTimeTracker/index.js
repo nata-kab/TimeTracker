@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, ImageBackground } from "react-native";
 import {
   addTimeTracker,
   saveActiveTrackerStartTime,
@@ -8,9 +8,11 @@ import { useDispatch } from "react-redux";
 
 import ButtonHelper from "../../Shared/ButtonHelper";
 import TitleInput from "./TitleInput";
+import roundedGradient from "../../../../assets/roundedGradient.png";
 
 const AddNewTimeTracker = () => {
   const timeTrackerTitleRef = useRef("");
+  console.log(roundedGradient);
 
   const dispatch = useDispatch();
 
@@ -27,10 +29,16 @@ const AddNewTimeTracker = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <TitleInput timeTrackerTitleRef={timeTrackerTitleRef} />
-      </View>
-      <Text style={styles.text}>00:00</Text>
+      <ImageBackground
+        source={roundedGradient}
+        resizeMode="cover"
+        style={styles.image}
+      >
+        <View style={styles.inputContainer}>
+          <TitleInput timeTrackerTitleRef={timeTrackerTitleRef} />
+        </View>
+        <Text style={styles.text}>00:00</Text>
+      </ImageBackground>
       <View style={styles.buttonContainer}>
         <ButtonHelper
           buttonColor="#1f7a1f"
@@ -48,14 +56,14 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
+    flex: 1,
+    flexShrink: 0,
+    flexBasis: "20%",
+    minHeight: 140,
     width: "100%",
-    backgroundColor: "#ffccd5",
-    padding: 30,
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,
-    marginBottom: 35,
+    marginBottom: 40,
     shadowColor: "#A0A0A0",
     shadowOffset: {
       width: 0,
@@ -73,12 +81,28 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   inputContainer: {
-    alignItems: "center",
-    padding: 5,
+    display: "flex",
+    marginTop: 20,
+    overflow: "hidden",
   },
   text: {
-    fontSize: 20,
-    padding: 10,
+    display: "flex",
+    fontSize: 30,
+    marginBottom: 25,
+    color: "white",
+    fontStyle: "italic",
+  },
+  image: {
+    display: "flex",
+    flexShrink: 0,
+    justifyContent: "space-around",
+    alignItems: "center",
+    flexDirection: "column",
+    width: "100%",
+    height: " 100%",
+    borderBottomRightRadius: 20,
+    borderBottomLeftRadius: 20,
+    overflow: "hidden",
   },
 });
 

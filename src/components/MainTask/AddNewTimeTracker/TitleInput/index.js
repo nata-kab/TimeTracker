@@ -17,6 +17,10 @@ const TitleInput = ({ timeTrackerTitleRef }) => {
 const styles = StyleSheet.create({
   input: {
     fontSize: 16,
+    backgroundColor: "rgba(100,100,100, 0.2)",
+    borderRadius: 20,
+    textAlign: "center",
+    padding: 7,
   },
 });
 
