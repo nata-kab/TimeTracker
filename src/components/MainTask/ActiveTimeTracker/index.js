@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ImageBackground } from "react-native";
 import {
   editTimeTracker,
   addTimeTrackerData,
@@ -11,6 +11,8 @@ import Title from "../../Shared/Title";
 import Timer from "./Timer";
 import ButtonHelper from "../../Shared/ButtonHelper";
 import calculateTime from "../../../helpers/calculateTime";
+import roundedGradient from "../../../../assets/roundedGradient.png";
+import sharedStyles from "../../../styles/sharedStyles";
 
 const ActiveTimeTracker = ({
   activeTimeTracker: { timeTrackerName, timeTrackerId, timeTrackerTotalTime },
@@ -55,33 +57,30 @@ const ActiveTimeTracker = ({
   };
 
   return (
-    <View style={styles.container}>
-      <Title text={timeTrackerName} />
-      <Timer currentEndTimeRef={currentEndTimeRef} />
-      <ButtonHelper
-        buttonColor="#992600"
-        iconName={"stop"}
-        buttonWidth={55}
-        buttonHeight={55}
-        onPress={editTrackersListItem}
-      />
+    <View style={sharedStyles.timeTrackerContainer}>
+      <ImageBackground
+        source={roundedGradient}
+        resizeMode="cover"
+        style={sharedStyles.backgroundImage}
+      >
+        <View style={sharedStyles.mainTitle}>
+          <Title text={timeTrackerName} size={25} color="white" />
+        </View>
+        <Timer currentEndTimeRef={currentEndTimeRef} />
+      </ImageBackground>
+
+      <View style={sharedStyles.timeTrackerButtonContainer}>
+        <ButtonHelper
+          buttonColor="#992600"
+          iconName={"stop"}
+          buttonWidth={55}
+          buttonHeight={55}
+          onPress={editTrackersListItem}
+        />
+      </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    width: "98%",
-    backgroundColor: "#b1d27b",
-    margin: 5,
-    padding: 10,
-    borderRadius: 10,
-  },
-});
 
 ActiveTimeTracker.propTypes = {
   timeTrackerId: number,

@@ -19,7 +19,7 @@ const ButtonHelper = ({
       }
       onPress={onPress}
     >
-      {iconName && <FontAwesome name={iconName} size={18} color="#ffffff" />}
+      {iconName && <FontAwesome name={iconName} size={19} color="#ffffff" />}
       {children && <Text>{children}</Text>}
     </TouchableOpacity>
   );
@@ -36,8 +36,11 @@ const styles = (buttonColor, borderRadius, buttonWidth, buttonHeight) =>
       width: buttonWidth,
       height: buttonHeight,
       borderRadius: borderRadius,
-      margin: 3,
-      padding: 5,
+      marginRight: 15,
+      marginLeft: 15,
+      marginTop: 3,
+      marginBottom: 3,
+      padding: 7,
     },
     text: {
       textAlign: "center",

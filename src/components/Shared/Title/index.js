@@ -1,32 +1,28 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { string } from "prop-types";
+import { Text, StyleSheet } from "react-native";
+import { number, string } from "prop-types";
 
-const Title = ({ text }) => {
-  return (
-    <View style={styles.title}>
-      <Text style={styles.text}> {text} </Text>
-    </View>
-  );
+const Title = ({ text, size, color }) => {
+  return <Text style={styles(size, color).text}> {text} </Text>;
 };
 
-const styles = StyleSheet.create({
-  title: {
-    flex: 1,
-    alignItems: "flex-start",
-    margin: 4,
-  },
-  text: {
-    fontSize: 16,
-    fontWeight: "600",
-  },
-});
+const styles = (size, color) =>
+  StyleSheet.create({
+    text: {
+      fontSize: size,
+      color: color,
+    },
+  });
 
 Title.propTypes = {
   text: string,
+  size: number,
+  color: string,
 };
 Title.defaultProps = {
   text: "",
+  size: 15,
+  color: "#555555",
 };
 
 export default Title;

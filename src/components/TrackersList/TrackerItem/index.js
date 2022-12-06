@@ -1,10 +1,11 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
 import { oneOfType, string, number, func, object } from "prop-types";
 
 import Title from "../../Shared/Title";
 import ButtonHelper from "../../Shared/ButtonHelper";
 import timeConverter from "../../../helpers/timeConverter";
+import sharedStyles from "../../../styles/sharedStyles";
 
 const TrackerItem = ({
   item,
@@ -17,13 +18,13 @@ const TrackerItem = ({
       style={styles.listItem}
       onPress={() => handleTimeTrackerModal(item)}
     >
-      <Title text={timeTrackerName} />
-      <Text style={styles.time}>
-        Time: {timeConverter(timeTrackerTotalTime)}
-      </Text>
+      <View style={sharedStyles.timeTrackerListTitle}>
+        <Title text={timeTrackerName} />
+      </View>
+      <Text style={styles.time}>{timeConverter(timeTrackerTotalTime)}</Text>
       <ButtonHelper
         iconName="play"
-        buttonColor="#C0C0C0"
+        buttonColor="#ebc672"
         buttonWidth={48}
         buttonHeight={48}
         onPress={() => handleEditTimeTracker(timeTrackerId)}
@@ -37,16 +38,34 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
     maxWidth: "95%",
     backgroundColor: "#ffffff",
     margin: 7,
-    paddingVertical: 10,
+    paddingVertical: 7,
     paddingHorizontal: 5,
-    borderRadius: 10,
+    borderRadius: 20,
+    shadowColor: "#A0A0A0",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
   },
   time: {
-    margin: 10,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: 15,
+    marginLeft: 15,
+    backgroundColor: "#F0F0F0",
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 10,
+    overflow: "hidden",
+    color: "#999999",
   },
 });
 
