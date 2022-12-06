@@ -49,6 +49,7 @@ const TrackerList = () => {
       {inactiveTrackersList.length > 0 ? (
         <FlatList
           style={styles.list}
+          contentContainerStyle={styles.contentContainer}
           data={inactiveTrackersList}
           renderItem={({ item }) => (
             <TrackerItem
@@ -76,8 +77,10 @@ const styles = StyleSheet.create({
     display: "flex",
     width: "95%",
     alignSelf: "center",
-    marginBottom: 40,
     marginTop: 40,
+  },
+  contentContainer: {
+    paddingBottom: 70,
   },
 });
 

@@ -40,7 +40,7 @@ const AddNewTimeTracker = () => {
       </ImageBackground>
       <View style={styles.buttonContainer}>
         <ButtonHelper
-          buttonColor="#004CAD"
+          buttonColor="darkcyan"
           iconName={"play"}
           buttonWidth={55}
           buttonHeight={55}
@@ -56,12 +56,11 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     flex: 0,
-    flexShrink: 0,
-    flexBasis: "24%",
-    minHeight: 140,
     width: "100%",
+    height: 180,
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,
+
     shadowColor: "#333",
     shadowOffset: {
       width: 0,
@@ -70,7 +69,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.55,
     shadowRadius: 14.78,
 
-    elevation: 24,
+    elevation: 10,
   },
   buttonContainer: {
     alignSelf: "center",
@@ -82,7 +81,7 @@ const styles = StyleSheet.create({
     display: "flex",
     marginTop: 45,
     alignItems: "center",
-    backgroundColor: "rgba(200,200,200, 0.3)",
+    backgroundColor: "rgba(100,100,100, 0.15)",
     borderRadius: 20,
     overflow: "hidden",
     justifyContent: "center",
@@ -91,9 +90,8 @@ const styles = StyleSheet.create({
   },
   text: {
     display: "flex",
-    fontSize: 40,
+    fontSize: 45,
     marginBottom: 35,
-    marginTop: 20,
     color: "white",
     fontStyle: "italic",
   },
@@ -108,6 +106,8 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,
     overflow: "hidden",
+    backgroundColor: "rgba(0,0,0,1)",
+    opacity: 0.85,
   },
 });
 

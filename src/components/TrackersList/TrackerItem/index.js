@@ -17,11 +17,11 @@ const TrackerItem = ({
       style={styles.listItem}
       onPress={() => handleTimeTrackerModal(item)}
     >
-      <Title text={timeTrackerName} textColor="rgb(128,128,128)" />
+      <Title text={timeTrackerName} />
       <Text style={styles.time}>{timeConverter(timeTrackerTotalTime)}</Text>
       <ButtonHelper
         iconName="play"
-        buttonColor="khaki"
+        buttonColor="#ebc672"
         buttonWidth={48}
         buttonHeight={48}
         onPress={() => handleEditTimeTracker(timeTrackerId)}
@@ -58,9 +58,8 @@ const styles = StyleSheet.create({
     marginRight: 15,
     marginLeft: 15,
     backgroundColor: "#F0F0F0",
-    paddingHorizontal: 14,
-    paddingVertical: 7,
-    // padding: 7,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
     borderRadius: 10,
     overflow: "hidden",
     color: "#999999",

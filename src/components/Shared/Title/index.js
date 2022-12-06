@@ -2,15 +2,15 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { number, string } from "prop-types";
 
-const Title = ({ text, size, textColor }) => {
+const Title = ({ text, size }) => {
   return (
-    <View style={styles(size).title}>
-      <Text style={styles(textColor).text}> {text} </Text>
+    <View style={styles().title}>
+      <Text style={styles(size).text}> {text} </Text>
     </View>
   );
 };
 
-const styles = (size, textColor) =>
+const styles = (size) =>
   StyleSheet.create({
     title: {
       flex: 1,
@@ -19,20 +19,18 @@ const styles = (size, textColor) =>
       marginRight: 15,
     },
     text: {
-      color: "rgb(128,128,128)",
       fontSize: size,
+      color: "#555555",
     },
   });
 
 Title.propTypes = {
   text: string,
   size: number,
-  textColor: string,
 };
 Title.defaultProps = {
   text: "",
   size: 15,
-  textColor: "#333333",
 };
 
 export default Title;

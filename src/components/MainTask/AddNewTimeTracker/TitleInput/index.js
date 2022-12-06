@@ -8,9 +8,8 @@ const TitleInput = ({ timeTrackerTitleRef }) => {
       onChangeText={(value) => (timeTrackerTitleRef.current = value)}
       placeholder="Add activity title"
       maxLength={40}
-      multiline={true}
       style={styles.input}
-      placeholderTextColor="#ffffff"
+      placeholderTextColor={styles.input.color}
     />
   );
 };

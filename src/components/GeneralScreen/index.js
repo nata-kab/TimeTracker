@@ -12,7 +12,7 @@ const GeneralScreen = () => {
 
   return (
     <SafeAreaView style={styles.appContainer}>
-      <StatusBar translucent backgroundColor="#7A5612" />
+      <StatusBar translucent backgroundColor="transparent" />
       <View style={styles.container}>
         <MainTask />
         <TrackersList />
@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     backgroundColor: "transparent",
-    alignSelf: "center",
     bottom: 10,
     right: 22,
     position: "absolute",
