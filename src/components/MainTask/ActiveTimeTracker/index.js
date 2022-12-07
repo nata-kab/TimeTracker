@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { View, StyleSheet, ImageBackground } from "react-native";
+import { View, ImageBackground } from "react-native";
 import {
   editTimeTracker,
   addTimeTrackerData,
@@ -12,6 +12,7 @@ import Timer from "./Timer";
 import ButtonHelper from "../../Shared/ButtonHelper";
 import calculateTime from "../../../helpers/calculateTime";
 import roundedGradient from "../../../../assets/roundedGradient.png";
+import style from "./ActiveTimeTracker.style";
 import sharedStyles from "../../../styles/sharedStyles";
 
 const ActiveTimeTracker = ({
@@ -63,7 +64,7 @@ const ActiveTimeTracker = ({
         resizeMode="cover"
         style={sharedStyles.backgroundImage}
       >
-        <View style={sharedStyles.mainTitle}>
+        <View style={style.mainTitle}>
           <Title text={timeTrackerName} size={25} color="white" />
         </View>
         <Timer currentEndTimeRef={currentEndTimeRef} />

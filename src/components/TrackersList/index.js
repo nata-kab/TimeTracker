@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList, View } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import {
   editTimeTracker,
@@ -9,6 +9,7 @@ import {
 import ModalWindow from "./ModalWindow";
 import Title from "../Shared/Title";
 import TrackerItem from "./TrackerItem";
+import styles from "./TrackersList.style";
 
 const TrackerList = () => {
   const [timeTrackerModalVisible, setTimeTrackerModalVisible] = useState(false);
@@ -61,7 +62,9 @@ const TrackerList = () => {
           keyExtractor={(item) => item.timeTrackerId}
         />
       ) : (
-        <Title text="The tracked activity list is empty" />
+        <View style={styles.textContainer}>
+          <Title text="The tracked activity list is empty" />
+        </View>
       )}
       <ModalWindow
         isModalVisible={timeTrackerModalVisible}
@@ -71,17 +74,5 @@ const TrackerList = () => {
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  list: {
-    display: "flex",
-    width: "95%",
-    alignSelf: "center",
-    marginTop: 40,
-  },
-  contentContainer: {
-    paddingBottom: 70,
-  },
-});
 
 export default TrackerList;

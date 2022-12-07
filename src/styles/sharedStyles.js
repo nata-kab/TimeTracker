@@ -40,42 +40,6 @@ const sharedStyles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0,1)",
     opacity: 0.85,
   },
-  inputContainer: {
-    display: "flex",
-    marginTop: 45,
-    alignItems: "center",
-    backgroundColor: "rgba(100,100,100, 0.15)",
-    borderRadius: 20,
-    overflow: "hidden",
-    justifyContent: "center",
-    paddingHorizontal: 14,
-    paddingVertical: 7,
-  },
-  time: {
-    display: "flex",
-    fontSize: 45,
-    marginBottom: 35,
-    color: "white",
-    fontStyle: "italic",
-  },
-  activeTime: {
-    display: "flex",
-    fontSize: 45,
-    color: "white",
-    fontStyle: "italic",
-  },
-  mainTitle: {
-    marginTop: 45,
-    alignItems: "flex-start",
-    marginLeft: 40,
-    marginRight: 40,
-  },
-  timeTrackerListTitle: {
-    flex: 1,
-    alignItems: "flex-start",
-    marginLeft: 15,
-    marginRight: 15,
-  },
 });
 
 export default sharedStyles;

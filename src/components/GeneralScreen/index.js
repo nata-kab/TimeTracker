@@ -1,11 +1,12 @@
 import React from "react";
-import { View, SafeAreaView, StyleSheet, StatusBar } from "react-native";
+import { View, SafeAreaView, StatusBar } from "react-native";
 import { useDispatch } from "react-redux";
 import { resetTimeTrackerList } from "../../redux/reducers/timeTrackersListSlice";
 
 import MainTask from "../MainTask";
 import ButtonHelper from "../Shared/ButtonHelper";
 import TrackersList from "../TrackersList";
+import styles from "./GeneralScreen.style";
 
 const GeneralScreen = () => {
   const dispatch = useDispatch();
@@ -27,23 +28,5 @@ const GeneralScreen = () => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  appContainer: {
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: "#f5f5f5",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  buttonContainer: {
-    backgroundColor: "transparent",
-    bottom: 10,
-    right: 22,
-    position: "absolute",
-  },
-});
 
 export default GeneralScreen;

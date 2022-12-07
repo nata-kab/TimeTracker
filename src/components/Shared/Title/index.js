@@ -1,18 +1,12 @@
 import React from "react";
-import { Text, StyleSheet } from "react-native";
+import { Text } from "react-native";
 import { number, string } from "prop-types";
+
+import styles from "./Title.style";
 
 const Title = ({ text, size, color }) => {
   return <Text style={styles(size, color).text}> {text} </Text>;
 };
-
-const styles = (size, color) =>
-  StyleSheet.create({
-    text: {
-      fontSize: size,
-      color: color,
-    },
-  });
 
 Title.propTypes = {
   text: string,

@@ -1,7 +1,9 @@
 import React from "react";
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { TouchableOpacity, Text } from "react-native";
 import { func, oneOfType, string, node, number } from "prop-types";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+
+import styles from "./ButtonHelper.style";
 
 const ButtonHelper = ({
   children,
@@ -24,28 +26,6 @@ const ButtonHelper = ({
     </TouchableOpacity>
   );
 };
-
-const styles = (buttonColor, borderRadius, buttonWidth, buttonHeight) =>
-  StyleSheet.create({
-    button: {
-      display: "flex",
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "center",
-      backgroundColor: buttonColor,
-      width: buttonWidth,
-      height: buttonHeight,
-      borderRadius: borderRadius,
-      marginRight: 15,
-      marginLeft: 15,
-      marginTop: 3,
-      marginBottom: 3,
-      padding: 7,
-    },
-    text: {
-      textAlign: "center",
-    },
-  });
 
 ButtonHelper.propTypes = {
   iconName: string,

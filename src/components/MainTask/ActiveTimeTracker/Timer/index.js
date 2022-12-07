@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text } from "react-native";
 import { useSelector } from "react-redux";
 import { func, number, oneOfType, object } from "prop-types";
 
 import calculateTime from "../../../../helpers/calculateTime";
 import timeConverter from "../../../../helpers/timeConverter";
-import sharedStyles from "../../../../styles/sharedStyles";
+import styles from "./Timer.style";
 
 const Timer = ({ currentEndTimeRef }) => {
   const { activeTrackerStartTime, timeTrackersList } = useSelector(
@@ -44,7 +44,7 @@ const Timer = ({ currentEndTimeRef }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={sharedStyles.activeTime}>{timeConverter(timerTime)}</Text>
+      <Text style={styles.activeTime}>{timeConverter(timerTime)}</Text>
       {activeTimeTracker.timeTrackerTotalTime !== 0 && (
         <Text style={styles.previousTime}>
           Previous time: {timeConverter(activeTimeTracker.timeTrackerTotalTime)}
@@ -53,21 +53,6 @@ const Timer = ({ currentEndTimeRef }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 35,
-  },
-  previousTime: {
-    fontSize: 11,
-    fontWeight: "300",
-    color: "white",
-  },
-});
 
 Timer.propTypes = {
   timeTrackerTitleRef: oneOfType([func, object, number]),

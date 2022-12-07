@@ -1,11 +1,11 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
+import { TouchableOpacity, Text, View } from "react-native";
 import { oneOfType, string, number, func, object } from "prop-types";
 
 import Title from "../../Shared/Title";
 import ButtonHelper from "../../Shared/ButtonHelper";
 import timeConverter from "../../../helpers/timeConverter";
-import sharedStyles from "../../../styles/sharedStyles";
+import styles from "./TrackerItem.style";
 
 const TrackerItem = ({
   item,
@@ -18,7 +18,7 @@ const TrackerItem = ({
       style={styles.listItem}
       onPress={() => handleTimeTrackerModal(item)}
     >
-      <View style={sharedStyles.timeTrackerListTitle}>
+      <View style={styles.title}>
         <Title text={timeTrackerName} />
       </View>
       <Text style={styles.time}>{timeConverter(timeTrackerTotalTime)}</Text>
@@ -32,42 +32,6 @@ const TrackerItem = ({
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  listItem: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    maxWidth: "95%",
-    backgroundColor: "#ffffff",
-    margin: 7,
-    paddingVertical: 7,
-    paddingHorizontal: 5,
-    borderRadius: 20,
-    shadowColor: "#A0A0A0",
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-
-    elevation: 5,
-  },
-  time: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    marginRight: 15,
-    marginLeft: 15,
-    backgroundColor: "#F0F0F0",
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 10,
-    overflow: "hidden",
-    color: "#999999",
-  },
-});
 
 TrackerItem.propTypes = {
   timeTrackerName: string,
