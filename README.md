@@ -29,3 +29,7 @@ npx react-native start # starts Metro Bundler
 npx react-native run-android # run app on android device / simulator
 npx react-native run-ios # run app on iOS device / simulator
 ```
+
+## What next?
+
+I'm currently working on the visual layer of the application and the related style structuring.
