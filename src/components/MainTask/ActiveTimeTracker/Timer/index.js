@@ -44,9 +44,11 @@ const Timer = ({ currentEndTimeRef }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.activeTime}>{timeConverter(timerTime)}</Text>
+      <Text style={styles.activeTime} allowFontScaling={false}>
+        {timeConverter(timerTime)}
+      </Text>
       {activeTimeTracker.timeTrackerTotalTime !== 0 && (
-        <Text style={styles.previousTime}>
+        <Text style={styles.previousTime} allowFontScaling={false}>
           Previous time: {timeConverter(activeTimeTracker.timeTrackerTotalTime)}
         </Text>
       )}

@@ -9,7 +9,7 @@ export default styles = StyleSheet.create({
     marginBottom: 35,
   },
   previousTime: {
-    fontSize: 11,
+    fontSize: 13,
     fontWeight: "300",
     color: "white",
   },

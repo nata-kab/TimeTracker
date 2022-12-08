@@ -12,6 +12,9 @@ const TitleInput = ({ timeTrackerTitleRef }) => {
       maxLength={40}
       style={styles.input}
       placeholderTextColor={styles.input.color}
+      selectionColor={styles.input.color}
+      allowFontScaling={false}
+      cursorColor={styles.input.color}
     />
   );
 };

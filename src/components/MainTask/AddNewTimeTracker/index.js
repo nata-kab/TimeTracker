@@ -38,7 +38,9 @@ const AddNewTimeTracker = () => {
         <View style={styles.inputContainer}>
           <TitleInput timeTrackerTitleRef={timeTrackerTitleRef} />
         </View>
-        <Text style={styles.time}>00:00</Text>
+        <Text style={styles.time} allowFontScaling={false}>
+          00:00
+        </Text>
       </ImageBackground>
       <View style={sharedStyles.timeTrackerButtonContainer}>
         <ButtonHelper

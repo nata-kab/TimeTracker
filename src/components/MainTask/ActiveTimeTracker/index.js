@@ -65,7 +65,12 @@ const ActiveTimeTracker = ({
         style={sharedStyles.backgroundImage}
       >
         <View style={style.mainTitle}>
-          <Title text={timeTrackerName} size={25} color="white" />
+          <Title
+            text={timeTrackerName}
+            size={25}
+            color="white"
+            fontScaling={false}
+          />
         </View>
         <Timer currentEndTimeRef={currentEndTimeRef} />
       </ImageBackground>
