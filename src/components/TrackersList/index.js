@@ -7,7 +7,7 @@ import {
 } from "../../redux/reducers/timeTrackersListSlice";
 
 import ModalWindow from "./ModalWindow";
-import Title from "../Shared/Title";
+import Typography from "../Shared/Typography";
 import TrackerItem from "./TrackerItem";
 import styles from "./TrackersList.style";
 
@@ -63,7 +63,7 @@ const TrackerList = () => {
         />
       ) : (
         <View style={styles.textContainer}>
-          <Title text="The tracked activity list is empty" />
+          <Typography>The tracked activity list is empty</Typography>
         </View>
       )}
       <ModalWindow

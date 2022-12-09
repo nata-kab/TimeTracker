@@ -5,6 +5,7 @@ import { resetTimeTrackerList } from "../../redux/reducers/timeTrackersListSlice
 
 import MainTask from "../MainTask";
 import ButtonHelper from "../Shared/ButtonHelper";
+import TimeTrackerTimer from "../TimeTrackerTimer";
 import TrackersList from "../TrackersList";
 import styles from "./GeneralScreen.style";
 
@@ -15,7 +16,8 @@ const GeneralScreen = () => {
     <SafeAreaView style={styles.appContainer}>
       <StatusBar translucent backgroundColor="transparent" />
       <View style={styles.container}>
-        <MainTask />
+        <TimeTrackerTimer />
+        {/* <MainTask /> */}
         <TrackersList />
         <View style={styles.buttonContainer}>
           <ButtonHelper
