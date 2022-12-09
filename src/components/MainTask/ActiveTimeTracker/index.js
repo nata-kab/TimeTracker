@@ -7,13 +7,13 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { number, string } from "prop-types";
 
-import Title from "../../Shared/Title";
 import Timer from "./Timer";
 import ButtonHelper from "../../Shared/ButtonHelper";
 import calculateTime from "../../../helpers/calculateTime";
 import roundedGradient from "../../../../assets/roundedGradient.png";
 import style from "./ActiveTimeTracker.style";
 import sharedStyles from "../../../styles/sharedStyles";
+import Typography from "../../Shared/Typography";
 
 const ActiveTimeTracker = ({
   activeTimeTracker: { timeTrackerName, timeTrackerId, timeTrackerTotalTime },
@@ -65,12 +65,9 @@ const ActiveTimeTracker = ({
         style={sharedStyles.backgroundImage}
       >
         <View style={style.mainTitle}>
-          <Title
-            text={timeTrackerName}
-            size={25}
-            color="white"
-            fontScaling={false}
-          />
+          <Typography size={25} color="white" fontScaling={false}>
+            {timeTrackerName}
+          </Typography>
         </View>
         <Timer currentEndTimeRef={currentEndTimeRef} />
       </ImageBackground>

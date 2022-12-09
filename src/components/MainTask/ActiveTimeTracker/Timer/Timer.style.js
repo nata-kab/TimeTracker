@@ -8,15 +8,4 @@ export default styles = StyleSheet.create({
     justifyContent: "center",
     marginBottom: 35,
   },
-  previousTime: {
-    fontSize: 13,
-    fontWeight: "300",
-    color: "white",
-  },
-  activeTime: {
-    display: "flex",
-    fontSize: 45,
-    color: "white",
-    fontStyle: "italic",
-  },
 });

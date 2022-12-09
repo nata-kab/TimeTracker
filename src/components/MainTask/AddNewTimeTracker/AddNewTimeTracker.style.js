@@ -12,11 +12,8 @@ export default styles = StyleSheet.create({
     paddingHorizontal: 14,
     paddingVertical: 7,
   },
-  time: {
+  timeContainer: {
     display: "flex",
-    fontSize: 45,
     marginBottom: 35,
-    color: "white",
-    fontStyle: "italic",
   },
 });

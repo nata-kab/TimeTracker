@@ -2,7 +2,7 @@ import React from "react";
 import { TouchableOpacity, Text, View } from "react-native";
 import { oneOfType, string, number, func, object } from "prop-types";
 
-import Title from "../../Shared/Title";
+import Typography from "../../Shared/Typography";
 import ButtonHelper from "../../Shared/ButtonHelper";
 import timeConverter from "../../../helpers/timeConverter";
 import styles from "./TrackerItem.style";
@@ -19,7 +19,7 @@ const TrackerItem = ({
       onPress={() => handleTimeTrackerModal(item)}
     >
       <View style={styles.title}>
-        <Title text={timeTrackerName} />
+        <Typography>{timeTrackerName}</Typography>
       </View>
       <Text style={styles.time}>{timeConverter(timeTrackerTotalTime)}</Text>
       <ButtonHelper

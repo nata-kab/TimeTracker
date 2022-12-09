@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { useSelector } from "react-redux";
 import { func, number, oneOfType, object } from "prop-types";
 
 import calculateTime from "../../../../helpers/calculateTime";
 import timeConverter from "../../../../helpers/timeConverter";
 import styles from "./Timer.style";
+import Typography from "../../../Shared/Typography";
 
 const Timer = ({ currentEndTimeRef }) => {
   const { activeTrackerStartTime, timeTrackersList } = useSelector(
@@ -44,13 +45,24 @@ const Timer = ({ currentEndTimeRef }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.activeTime} allowFontScaling={false}>
+      <Typography
+        size={45}
+        color="white"
+        fontStyle="italic"
+        fontScaling={false}
+      >
         {timeConverter(timerTime)}
-      </Text>
+      </Typography>
       {activeTimeTracker.timeTrackerTotalTime !== 0 && (
-        <Text style={styles.previousTime} allowFontScaling={false}>
-          Previous time: {timeConverter(activeTimeTracker.timeTrackerTotalTime)}
-        </Text>
+        <Typography
+          size={13}
+          color="white"
+          fontScaling={false}
+          fontWeight="300"
+        >
+          Previous time:
+          {timeConverter(activeTimeTracker.timeTrackerTotalTime)}
+        </Typography>
       )}
     </View>
   );

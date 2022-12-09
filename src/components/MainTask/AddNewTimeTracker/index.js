@@ -11,6 +11,7 @@ import TitleInput from "./TitleInput";
 import roundedGradient from "../../../../assets/roundedGradient.png";
 import sharedStyles from "../../../styles/sharedStyles";
 import styles from "./AddNewTimeTracker.style";
+import Typography from "../../Shared/Typography";
 
 const AddNewTimeTracker = () => {
   const timeTrackerTitleRef = useRef("");
@@ -38,9 +39,16 @@ const AddNewTimeTracker = () => {
         <View style={styles.inputContainer}>
           <TitleInput timeTrackerTitleRef={timeTrackerTitleRef} />
         </View>
-        <Text style={styles.time} allowFontScaling={false}>
-          00:00
-        </Text>
+        <View style={styles.timeContainer}>
+          <Typography
+            size={45}
+            color="white"
+            fontStyle="italic"
+            fontScaling={false}
+          >
+            00:00
+          </Typography>
+        </View>
       </ImageBackground>
       <View style={sharedStyles.timeTrackerButtonContainer}>
         <ButtonHelper
