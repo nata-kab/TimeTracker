@@ -13,12 +13,20 @@ const Timer = ({ currentEndTimeRef }) => {
     (state) => state
   );
 
-  const startTime =
-    calculateTime(activeTrackerStartTime, currentEndTimeRef.current) > 0
-      ? startTime
-      : 0;
+  const startTime = () => {
+    const time = calculateTime(
+      activeTrackerStartTime,
+      currentEndTimeRef.current
+    );
 
-  const [timerTime, setTimerTime] = useState(startTime);
+    if (time > 0) {
+      return time;
+    } else {
+      return 0;
+    }
+  };
+
+  const [timerTime, setTimerTime] = useState(startTime());
 
   const activeTimeTracker = timeTrackersList.find(
     (value) => value.isTimeTrackerActive

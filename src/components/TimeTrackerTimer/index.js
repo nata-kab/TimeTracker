@@ -30,6 +30,14 @@ const TimeTrackerTimer = () => {
 
   const dispatch = useDispatch();
 
+  const calculateTotalTime = (timeTrackerDurationSeconds) => {
+    const { timeTrackerTotalTime } = activeTimeTracker;
+
+    const totalTime = timeTrackerDurationSeconds + timeTrackerTotalTime;
+
+    return totalTime;
+  };
+
   const handleAddTracker = () => {
     if (timeTrackerTitleRef.current === "") {
       alert("Enter an activity title before adding !");
@@ -37,15 +45,8 @@ const TimeTrackerTimer = () => {
     }
 
     dispatch(saveActiveTrackerStartTime());
+
     dispatch(addTimeTracker({ timeTrackerName: timeTrackerTitleRef.current }));
-  };
-
-  const calculateTotalTime = (timeTrackerDurationSeconds) => {
-    const { timeTrackerTotalTime } = activeTimeTracker;
-
-    const totalTime = timeTrackerDurationSeconds + timeTrackerTotalTime;
-
-    return totalTime;
   };
 
   const editTrackersListItem = () => {

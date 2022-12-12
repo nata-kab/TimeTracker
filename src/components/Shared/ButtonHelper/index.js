@@ -1,9 +1,10 @@
 import React from "react";
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity } from "react-native";
 import { func, oneOfType, string, node, number } from "prop-types";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 import styles from "./ButtonHelper.style";
+import Typography from "../Typography";
 
 const ButtonHelper = ({
   children,
@@ -22,7 +23,7 @@ const ButtonHelper = ({
       onPress={onPress}
     >
       {iconName && <FontAwesome name={iconName} size={19} color="#ffffff" />}
-      {children && <Text>{children}</Text>}
+      {children && <Typography>{children}</Typography>}
     </TouchableOpacity>
   );
 };

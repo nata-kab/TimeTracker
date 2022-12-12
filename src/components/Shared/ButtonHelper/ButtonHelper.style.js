@@ -22,7 +22,4 @@ export default styles = (
       marginBottom: 3,
       padding: 7,
     },
-    text: {
-      textAlign: "center",
-    },
   });

@@ -28,7 +28,7 @@ Typography.propTypes = {
   color: string,
   fontScaling: bool,
   fontStyle: oneOf(["italic", "normal"]),
-  fontWeight: oneOf(["300", "400", "500"]),
+  fontWeight: oneOf(["300", "400", "500", "600"]),
 };
 Typography.defaultProps = {
   children: "",

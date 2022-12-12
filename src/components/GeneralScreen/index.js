@@ -3,7 +3,6 @@ import { View, SafeAreaView, StatusBar } from "react-native";
 import { useDispatch } from "react-redux";
 import { resetTimeTrackerList } from "../../redux/reducers/timeTrackersListSlice";
 
-import MainTask from "../MainTask";
 import ButtonHelper from "../Shared/ButtonHelper";
 import TimeTrackerTimer from "../TimeTrackerTimer";
 import TrackersList from "../TrackersList";
@@ -17,7 +16,6 @@ const GeneralScreen = () => {
       <StatusBar translucent backgroundColor="transparent" />
       <View style={styles.container}>
         <TimeTrackerTimer />
-        {/* <MainTask /> */}
         <TrackersList />
         <View style={styles.buttonContainer}>
           <ButtonHelper

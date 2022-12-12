@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity, Text, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { oneOfType, string, number, func, object } from "prop-types";
 
 import Typography from "../../Shared/Typography";
@@ -21,7 +21,10 @@ const TrackerItem = ({
       <View style={styles.title}>
         <Typography>{timeTrackerName}</Typography>
       </View>
-      <Text style={styles.time}>{timeConverter(timeTrackerTotalTime)}</Text>
+      <View style={styles.time}>
+        <Typography>{timeConverter(timeTrackerTotalTime)}</Typography>
+      </View>
+
       <ButtonHelper
         iconName="play"
         buttonColor="#ebc672"

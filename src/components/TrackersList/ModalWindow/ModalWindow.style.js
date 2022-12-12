@@ -36,7 +36,7 @@ export default styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: "#ffffff",
   },
-  modalText: {
+  modalTextContainer: {
     marginBottom: 15,
     padding: 5,
     textAlign: "center",

@@ -5,6 +5,7 @@ import { Alert, Modal, ScrollView, Text, View } from "react-native";
 import dateConverter from "../../../helpers/dateConverter";
 import timeConverter from "../../../helpers/timeConverter";
 import ButtonHelper from "../../Shared/ButtonHelper";
+import Typography from "../../Shared/Typography";
 import styles from "./ModalWindow.style";
 
 const ModalWindow = ({
@@ -32,21 +33,30 @@ const ModalWindow = ({
         }}
       >
         <View style={styles.modalView}>
-          <Text style={styles.modalHeader}>{timeTrackerName}</Text>
-          <Text style={styles.modalText}>
-            Total time:
-            {timeConverter(timeTrackerTotalTime)}
-          </Text>
+          <Typography size={22} color="#404040" fontWeight="600">
+            {timeTrackerName}
+          </Typography>
+
+          <View style={styles.modalTextContainer}>
+            <Typography size={17} color="#404040" fontWeight="400">
+              Total time: {timeConverter(timeTrackerTotalTime)}
+            </Typography>
+          </View>
+
           <ScrollView style={styles.scrollView}>
             {timeTrackerTimesList.map((item, index) => (
               <View key={index} style={styles.scrollViewItem}>
-                <Text>
+                <Typography size={16} color="#404040" fontWeight="600">
                   Time: {timeConverter(item.timeTrackerDurationSeconds)}
-                </Text>
-                <Text>
+                </Typography>
+
+                <Typography>
                   Start time: {dateConverter(item.timeTrackerStartTime)}
-                </Text>
-                <Text>End time: {dateConverter(item.timeTrackerEndTime)}</Text>
+                </Typography>
+
+                <Typography>
+                  End time: {dateConverter(item.timeTrackerEndTime)}
+                </Typography>
               </View>
             ))}
           </ScrollView>
