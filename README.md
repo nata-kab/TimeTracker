@@ -29,3 +29,9 @@ npx react-native start # starts Metro Bundler
 npx react-native run-android # run app on android device / simulator
 npx react-native run-ios # run app on iOS device / simulator
 ```
+
+## Preview
+
+[GooglePlay](https://play.google.com/store/apps/details?id=com.timeTracker)
+<img src="assets/TimeTrackerActiveTask.png" width="100">
+<img src="assets/TimeTrackerScreen.png" width="100">
