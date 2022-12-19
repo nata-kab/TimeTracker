@@ -6,6 +6,8 @@ Time tracker allows backing to count time even if the application is killed 🥳
 You can display details of the time tracker or run it again to count new record.
 You can save multiple sessions for a single time tracker. You can also check detailed information for all sessions in a modal window.
 
+[GooglePlay](https://play.google.com/store/apps/details?id=com.timeTracker)
+
 ## 🚀 Getting started:
 
 Clone the repo:
@@ -32,6 +34,6 @@ npx react-native run-ios # run app on iOS device / simulator
 
 ## Preview
 
-[GooglePlay](https://play.google.com/store/apps/details?id=com.timeTracker)
-<img src="assets/TimeTrackerActiveTask.png" width="100">
-<img src="assets/TimeTrackerScreen.png" width="100">
+
+<img src="assets/TimeTrackerActiveTask.png" width="200">
+<img src="assets/TimeTrackerScreen.png" width="200">
