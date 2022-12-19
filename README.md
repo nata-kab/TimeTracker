@@ -8,6 +8,13 @@ You can save multiple sessions for a single time tracker. You can also check det
 
 [![googlePlay](https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=google-play&logoColor=white0)](https://play.google.com/store/apps/details?id=com.timeTracker)
 
+## Preview
+
+<div>
+<img src="assets/TimeTrackerActiveTask.png" width="200">
+<img src="assets/TimeTrackerScreen.png" width="200">
+</div>
+
 ## 🚀 Getting started:
 
 Clone the repo:
@@ -31,10 +38,3 @@ npx react-native start # starts Metro Bundler
 npx react-native run-android # run app on android device / simulator
 npx react-native run-ios # run app on iOS device / simulator
 ```
-
-## Preview
-
-<div>
-<img src="assets/TimeTrackerActiveTask.png" width="200">
-<img src="assets/TimeTrackerScreen.png" width="200">
-</div>
